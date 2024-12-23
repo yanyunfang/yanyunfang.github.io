@@ -148,18 +148,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -184,10 +184,33 @@
   <div class="post-block">
     <div class="post-content">
       <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 1 篇日志。 继续努力。</span>
+        <span class="collection-header">嗯..! 目前共计 2 篇日志。 继续努力。</span>
       </div>
 
       
+    <div class="collection-year">
+      <span class="collection-header">2024</span>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2024-12-22T17:23:11+08:00"
+              content="2024-12-22">
+          12-22
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/80c2fada/" itemprop="url">
+            <span itemprop="name">读美国纽约摄影学院教材</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
     <div class="collection-year">
       <span class="collection-header">2022</span>
     </div>
@@ -227,6 +250,7 @@
 
 
 <div class="copyright">
+  <span id="ganzhi"></span>
   &copy; 
   <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
@@ -271,6 +295,19 @@
       document.getElementById('dog_if').setAttribute("class","dog3");
     }
   }
+</script>
+<script src="../js/calendar.js"></script>
+<script>
+  const span = document.getElementById('ganzhi');
+
+  const now = new Date();
+  const year = now.getFullYear();      // 获取年（四位数）
+  const month = now.getMonth() + 1;   // 获取月（0-11，需要加 1）
+  const day = now.getDate();          // 获取日（1-31）
+  const hours = now.getHours();       // 获取小时（0-23）
+
+  const dateJson = calendar.solar2lunar(year,month,day,hours)
+  span.textContent = dateJson.gzYear + " " +dateJson.gzMonth + " " +dateJson.gzDay + " " +dateJson.gzHour + " ";
 </script>
 
     </div>
