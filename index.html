@@ -213,9 +213,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-12-22 17:23:11 / 修改时间：19:24:42" itemprop="dateCreated datePublished" datetime="2024-12-22T17:23:11+08:00">2024-12-22</time>
+      <time title="创建时间：2024-12-22 17:23:11" itemprop="dateCreated datePublished" datetime="2024-12-22T17:23:11+08:00">2024-12-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-24 23:50:06" itemprop="dateModified" datetime="2024-12-24T23:50:06+08:00">2024-12-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -237,7 +243,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="一、为什么要学习摄影？"><a href="#一、为什么要学习摄影？" class="headerlink" title="一、为什么要学习摄影？"></a>一、为什么要学习摄影？</h2>
+          <h2 id="一、摄影三原则"><a href="#一、摄影三原则" class="headerlink" title="一、摄影三原则"></a>一、摄影三原则</h2><ol>
+<li>一副好的照片要有一个鲜明的主体，主体必须明确，毫不含糊。</li>
+<li>一副好的照片必须能把注意力引导向主体。</li>
+<li>一副好照片必须画面简洁。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/80c2fada/#more" rel="contents">
@@ -364,6 +373,7 @@
 
 
 <div class="copyright">
+  <span id="ganzhi"></span>
   &copy; 
   <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
@@ -408,6 +418,19 @@
       document.getElementById('dog_if').setAttribute("class","dog3");
     }
   }
+</script>
+<script src="../js/calendar.js"></script>
+<script>
+  const span = document.getElementById('ganzhi');
+
+  const now = new Date();
+  const year = now.getFullYear();      // 获取年（四位数）
+  const month = now.getMonth() + 1;   // 获取月（0-11，需要加 1）
+  const day = now.getDate();          // 获取日（1-31）
+  const hours = now.getHours();       // 获取小时（0-23）
+
+  const dateJson = calendar.solar2lunar(year,month,day,hours)
+  span.textContent = dateJson.gzYear + " " +dateJson.gzMonth + " " +dateJson.gzDay + " " +dateJson.gzHour + " ";
 </script>
 
     </div>

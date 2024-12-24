@@ -250,6 +250,7 @@
 
 
 <div class="copyright">
+  <span id="ganzhi"></span>
   &copy; 
   <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
@@ -294,6 +295,19 @@
       document.getElementById('dog_if').setAttribute("class","dog3");
     }
   }
+</script>
+<script src="../js/calendar.js"></script>
+<script>
+  const span = document.getElementById('ganzhi');
+
+  const now = new Date();
+  const year = now.getFullYear();      // 获取年（四位数）
+  const month = now.getMonth() + 1;   // 获取月（0-11，需要加 1）
+  const day = now.getDate();          // 获取日（1-31）
+  const hours = now.getHours();       // 获取小时（0-23）
+
+  const dateJson = calendar.solar2lunar(year,month,day,hours)
+  span.textContent = dateJson.gzYear + " " +dateJson.gzMonth + " " +dateJson.gzDay + " " +dateJson.gzHour + " ";
 </script>
 
     </div>
