@@ -1260,6 +1260,24 @@ pre code {
   gap: 10px;
   justify-content: flex-start;
 }
+.sidebar-category .category-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sidebar-category .category-list-item {
+  margin: 5px 10px;
+  display: inline-block;
+}
+.sidebar-category .category-list-count {
+  color: #bbb;
+}
+.sidebar-category .category-list-count::before {
+  content: ' (';
+}
+.sidebar-category .category-list-count::after {
+  content: ') ';
+}
 @keyframes deactivate-sidebar-panel {
   from {
     height: var(--inactive-panel-height, 0);
