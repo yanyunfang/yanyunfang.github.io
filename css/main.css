@@ -1260,26 +1260,23 @@ pre code {
   gap: 10px;
   justify-content: flex-start;
 }
-.category-list {
+.sidebar-panel .category-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.category-list-item {
+.sidebar-panel .category-list-item {
   margin: 5px 10px;
   display: inline-block;
 }
-.category-list-count {
+.sidebar-panel .category-list-count {
   color: #bbb;
 }
-.category-list-count::before {
+.sidebar-panel .category-list-count::before {
   content: ' (';
 }
-.category-list-count::after {
+.sidebar-panel .category-list-count::after {
   content: ') ';
-}
-.category-list-child {
-  padding-left: 10px;
 }
 @keyframes deactivate-sidebar-panel {
   from {
