@@ -1260,6 +1260,27 @@ pre code {
   gap: 10px;
   justify-content: flex-start;
 }
+.category-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.category-list-item {
+  margin: 5px 10px;
+  display: inline-block;
+}
+.category-list-count {
+  color: #bbb;
+}
+.category-list-count::before {
+  content: ' (';
+}
+.category-list-count::after {
+  content: ') ';
+}
+.category-list-child {
+  padding-left: 10px;
+}
 @keyframes deactivate-sidebar-panel {
   from {
     height: var(--inactive-panel-height, 0);
