@@ -503,7 +503,7 @@ var calendar = {
    */
   toDiZhi: function (h) {
     //地支 + "时"
-    return calendar.Zhi[(h / 2) | 0] + "\u65F6"
+    return calendar.Zhi[ Math.floor((h + 1) / 2) % 12 ] + "\u65F6"
   },
   /**
 
