@@ -1270,6 +1270,11 @@ pre code {
   padding: 18px 10px;
   max-height: calc(100vh - 24px);
 }
+@media (max-width: 991px) {
+  .sidebar-category {
+    display: none;
+  }
+}
 .sidebar-category .category-list {
   list-style: none;
   margin: 0;
