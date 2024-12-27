@@ -24,7 +24,9 @@ function getNews(element, domain, year, month, day) {
     element.innerHTML = newsList
   } else {
     const loadingEl = document.querySelector('.loading');
+    const loadingEl2 = document.querySelector('.loading2');
     loadingEl.style.display = 'block';
+    loadingEl2.style.display = 'block';
     let url = domain + "/lm/xwlb/day/" + newsDate + ".shtml";
     fetch(url).then(res => res.text()).then(data => {
       console.log(data)
@@ -61,6 +63,7 @@ function getNews(element, domain, year, month, day) {
           element.innerHTML = dataAll
           //结束加载
           loadingEl.style.display = 'none';
+          loadingEl2.style.display = 'none';
         }
       });
     }).catch(error => {
@@ -70,6 +73,7 @@ function getNews(element, domain, year, month, day) {
         element.innerHTML = '今日新闻未送达！'
         //结束加载
         loadingEl.style.display = 'none';
+        loadingEl2.style.display = 'none';
       }
     });
   }
