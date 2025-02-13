@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"bokiboki.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="访问                                                                                                   let s3Client &#x3D; null;      function initCli">
+    <meta name="description" content="访问                                                                                                   let s3Client &#x3D; null;     let activeConnect">
 <meta property="og:type" content="website">
 <meta property="og:title" content="MINIO分片上传">
 <meta property="og:url" content="https://bokiboki.top/minio/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="访问                                                                                                   let s3Client &#x3D; null;      function initCli">
+<meta property="og:description" content="访问                                                                                                   let s3Client &#x3D; null;     let activeConnect">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-04T11:48:57.000Z">
-<meta property="article:modified_time" content="2025-02-13T15:39:16.019Z">
+<meta property="article:modified_time" content="2025-02-13T16:23:34.288Z">
 <meta property="article:author" content="yanyunfang">
 <meta name="twitter:card" content="summary">
 
@@ -239,8 +239,14 @@
 
 <script>
     let s3Client = null;
+    let activeConnections = 0;
+    let uploadedBytes = 0;
+    let totalBytes = 0;
+    let startTime = 0;
+    let uploadId = null;
+    let parts = [];
 
-    function initClient() {
+    async function initClient () {
         s3Client = new AWS.S3({
             endpoint: document.getElementById('endpoint').value,
             accessKeyId: document.getElementById('accessKey').value,
@@ -253,97 +259,147 @@
         listFiles();
     }
 
-    document.getElementById('fileInput').onchange = function (e) {
+    document.getElementById('fileInput').onchange = async function (e) {
         const file = e.target.files[0];
+        const bucket = document.getElementById('bucketName').value;
+        const key = file.name;
 
-        // 获取并验证分片参数
-        let shardNum = parseInt(document.getElementById('shardNum').value) || 5;
-        if (shardNum < 5) {
-            updateStatus('分片大小不能小于5MB，已自动调整为5MB', 'info');
-            shardNum = 5;
-        }
+        // 参数处理
+        let shardSize = parseInt(document.getElementById('shardNum').value) || 5;
+        shardSize = Math.max(shardSize, 5) * 1024 * 1024; // 强制最小5MB
+        const maxConcurrency = Math.max(parseInt(document.getElementById('threadNum').value) || 1,1);
 
-        let threadNum = parseInt(document.getElementById('threadNum').value) || 1;
-        if (threadNum < 1) {
-            updateStatus('线程数不能小于1，已自动调整为1', 'info');
-            threadNum = 1;
-        }
+        try {
+            // 初始化多部分上传
+            const multipartParams = { Bucket: bucket, Key: key };
+            const createResponse = await s3Client.createMultipartUpload(multipartParams).promise();
+            uploadId = createResponse.UploadId;
 
-        const params = {
-            Bucket: document.getElementById('bucketName').value,
-            Key: file.name,
-            Body: file,
-            partSize: shardNum * 1024 * 1024,
-            queueSize: threadNum
-        };
+            // 准备分片
+            const fileSize = file.size;
+            totalBytes = fileSize;
+            startTime = Date.now();
+            const partCount = Math.ceil(fileSize / shardSize);
+            const uploadPromises = [];
+            const partMap = new Array(partCount).fill(false);
 
-        const startTime = Date.now();
-        let lastTime = startTime;
-        let lastLoaded = 0;
-
-        const upload = s3Client.upload(params);
-
-        upload.on('httpUploadProgress', (evt) => {
-            const currentTime = Date.now();
-            const deltaTime = currentTime - lastTime;
-            const deltaLoaded = evt.loaded - lastLoaded;
-
-            // 计算实时速度
-            let speed = 0;
-            if (deltaTime > 0) {
-                speed = (deltaLoaded / deltaTime) * 1000; // B/s
+            // 创建分片上传任务
+            for (let partNumber = 1; partNumber <= partCount; partNumber++) {
+                uploadPromises.push(() => uploadPart(
+                    file,
+                    bucket,
+                    key,
+                    partNumber,
+                    shardSize,
+                    maxConcurrency
+                ));
             }
 
-            // 计算已用时间
-            const elapsedTime = currentTime - startTime;
-            const elapsedSeconds = Math.floor(elapsedTime / 1000);
-            const minutes = Math.floor(elapsedSeconds / 60);
-            const seconds = elapsedSeconds % 60;
-            const elapsedStr = `${minutes}分${seconds}秒`;
+            // 并行控制执行
+            await parallelExecutor(uploadPromises, maxConcurrency);
 
-            // 计算进度百分比
-            const progressPercent = ((evt.loaded / evt.total) * 100).toFixed(1);
-            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+            // 完成上传
+            const completeParams = {
+                Bucket: bucket,
+                Key: key,
+                UploadId: uploadId,
+                MultipartUpload: { Parts: parts.sort((a, b) => a.PartNumber - b.PartNumber) }
+            };
+            await s3Client.completeMultipartUpload(completeParams).promise();
 
-            // 格式化速度
-            let speedStr;
-            if (speed >= 1024 * 1024) {
-                speedStr = `${(speed / 1024 / 1024).toFixed(2)} MB/s`;
-            } else if (speed >= 1024) {
-                speedStr = `${(speed / 1024).toFixed(2)} KB/s`;
-            } else {
-                speedStr = `${speed.toFixed(2)} B/s`;
+            //updateStatus(`${file.name} 上传成功`, 'success');
+            listFiles();
+        } catch (err) {
+            updateStatus(`上传失败: ${err.message}`, 'error');
+            if (uploadId) {
+                await s3Client.abortMultipartUpload({
+                    Bucket: bucket,
+                    Key: key,
+                    UploadId: uploadId
+                }).promise();
             }
-            if(speed != 0){
-                updateStatus(`${file.name} 上传中: ${progressPercent}% | 速度: ${speedStr} | 已用时间: ${elapsedStr}`, 'info');
-            }
-            lastTime = currentTime;
-            lastLoaded = evt.loaded;
-        });
-
-        upload.send((err, data) => {
-            if (err) {
-                updateStatus(`上传失败: ${err.message}`, 'error');
-            } else {
-                // 计算总耗时和平均速度
-                const totalTime = (Date.now() - startTime) / 1000;
-                const avgSpeed = file.size / totalTime;
-                let avgSpeedStr;
-
-                if (avgSpeed >= 1024 * 1024) {
-                    avgSpeedStr = `${(avgSpeed / 1024 / 1024).toFixed(2)} MB/s`;
-                } else if (avgSpeed >= 1024) {
-                    avgSpeedStr = `${(avgSpeed / 1024).toFixed(2)} KB/s`;
-                } else {
-                    avgSpeedStr = `${avgSpeed.toFixed(2)} B/s`;
-                }
-
-                updateStatus(`${file.name} 上传成功 | 平均速度: ${avgSpeedStr} | 总耗时: ${totalTime.toFixed(1)}秒`, 'success');
-                listFiles();
-            }
+        } finally {
             document.getElementById('progress-bar').style.width = '0%';
-        });
+            activeConnections = 0;
+            uploadedBytes = 0;
+            parts = [];
+        }
     };
+
+    async function uploadPart(file, bucket, key, partNumber, shardSize, maxConcurrency) {
+        while (activeConnections >= maxConcurrency) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+        }
+
+        activeConnections++;
+        try {
+            const start = (partNumber - 1) * shardSize;
+            const end = Math.min(start + shardSize, file.size);
+            const blob = file.slice(start, end);
+
+            const uploadParams = {
+                Bucket: bucket,
+                Key: key,
+                UploadId: uploadId,
+                PartNumber: partNumber,
+                Body: blob
+            };
+
+            const response = await s3Client.uploadPart(uploadParams).promise();
+
+            parts.push({
+                ETag: response.ETag,
+                PartNumber: partNumber
+            });
+
+            // 更新进度
+            uploadedBytes += (end - start);
+            updateProgress();
+        } finally {
+            activeConnections--;
+        }
+    }
+
+    function updateProgress() {
+        const currentTime = Date.now();
+        const elapsedTime = (currentTime - startTime) / 1000;
+        const progressPercent = ((uploadedBytes / totalBytes) * 100).toFixed(1);
+        const speed = uploadedBytes / elapsedTime;
+
+        document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+
+        // 速度格式化
+        let speedStr;
+        if (speed >= 1024 * 1024) {
+            speedStr = `${(speed / 1024 / 1024).toFixed(2)} MB/s`;
+        } else if (speed >= 1024) {
+            speedStr = `${(speed / 1024).toFixed(2)} KB/s`;
+        } else {
+            speedStr = `${speed.toFixed(2)} B/s`;
+        }
+
+        // 时间格式化
+        const minutes = Math.floor(elapsedTime / 60);
+        const seconds = Math.floor(elapsedTime % 60);
+        updateStatus(`上传中: ${progressPercent}% | 速度: ${speedStr} | 已用时间: ${minutes}分${seconds}秒`, 'info');
+    }
+
+    async function parallelExecutor(tasks, concurrency) {
+        const results = [];
+        const executing = [];
+
+        for (const task of tasks) {
+            const p = Promise.resolve().then(task);
+            results.push(p);
+            const e = p.then(() => executing.splice(executing.indexOf(e), 1));
+            executing.push(e);
+
+            if (executing.length >= concurrency) {
+                await Promise.race(executing);
+            }
+        }
+        return Promise.all(results);
+    }
 
     function formatFileSize(bytes) {
         if(bytes <= 1024) return bytes + 'B';
