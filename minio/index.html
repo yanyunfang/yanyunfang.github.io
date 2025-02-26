@@ -29,7 +29,7 @@
 <meta property="og:description" content="访问                                                                                                  let s3Client &#x3D; null;     let uploaded">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-04T11:48:57.000Z">
-<meta property="article:modified_time" content="2025-02-19T07:31:38.437Z">
+<meta property="article:modified_time" content="2025-02-26T09:55:51.166Z">
 <meta property="article:author" content="yanyunfang">
 <meta name="twitter:card" content="summary">
 
@@ -251,7 +251,11 @@
             secretAccessKey: document.getElementById('secretKey').value,
             s3ForcePathStyle: true,
             signatureVersion: 'v4',
-            maxRetries: 3
+            maxRetries: 3,
+            httpOptions: {
+                timeout: 60 * 60 * 1000, // 单个上传任务的超时时间为 1 小时
+                socketTimeout: 60 * 60 * 1000,
+            }
         });
         document.getElementById('fileInput').disabled = false;
         listFiles();
