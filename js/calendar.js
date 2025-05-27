@@ -394,24 +394,16 @@ var calendar = {
       }
       if(y % 2 === 0){
         benyao += '0'
-        if(y === 6){
-          bianyao += '1'
-        }else{
-          bianyao += '0'
-        }
+        bianyao += y === 6 ? "1" : "0"
       }else{
         benyao += '1'
-        if(y === 9){
-          bianyao += '0'
-        }else{
-          bianyao += '1'
-        }
+        bianyao += y === 9 ? "0" : "1"
       }
     }
     let bengua = calendar.guaDict[benyao];
-    let biangua2 = calendar.guaDict[bianyao];
-    if(bengua !== biangua2){
-      return bengua + " " + biangua2
+    let biangua = calendar.guaDict[bianyao];
+    if(bengua !== biangua){
+      return bengua + " " + biangua
     }else{
       return bengua
     }
