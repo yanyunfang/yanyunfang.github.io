@@ -1056,9 +1056,9 @@ var liuyao = {
    * @trans["木","火","土","金","水"]
    * @return Cn string
    */
-  WuXing: ["\u6728","\u706b","\u571f","\u91d1","\u6c34"],
+  WuXing: ["\u6728", "\u706b", "\u571f", "\u91d1", "\u6c34"],
 
-  BaGua: [0b111,0b001,0b010,0b100,0b000,0b110,0b101,0b011],
+  BaGua: [0b111, 0b001, 0b010, 0b100, 0b000, 0b110, 0b101, 0b011],
 
   /**
    * 八卦速查表<=>八卦
@@ -1082,13 +1082,13 @@ var liuyao = {
    * @trans["金","木","水","土","土","木","火","金"]
    * @return Cn string
    */
-  BaGuaWuxing: ["\u91d1","\u6728","\u6c34","\u571f","\u571f","\u6728","\u706b","\u91d1"],
+  BaGuaWuxing: ["\u91d1", "\u6728", "\u6c34", "\u571f", "\u571f", "\u6728", "\u706b", "\u91d1"],
 
-  NeiGuaTianGan: ["\u7532","\u5e9a","\u620a","\u4e19","\u4e59","\u8f9b","\u5df1","\u4e01"],
-  WaiGuaTianGan: ["\u58ec","\u5e9a","\u620a","\u4e19","\u7678","\u8f9b","\u5df1","\u4e01"],
+  NeiGuaTianGan: ["\u7532", "\u5e9a", "\u620a", "\u4e19", "\u4e59", "\u8f9b", "\u5df1", "\u4e01"],
+  WaiGuaTianGan: ["\u58ec", "\u5e9a", "\u620a", "\u4e19", "\u7678", "\u8f9b", "\u5df1", "\u4e01"],
 
-  NeiGuaFirstDiZhi: ["\u5b50","\u5b50","\u5bc5","\u8fb0","\u672a","\u4e11","\u536f","\u5df3"],
-  WaiGuaFirstDiZhi: ["\u5348","\u5348","\u7533","\u620c","\u4e11","\u672a","\u9149","\u4ea5"],
+  NeiGuaFirstDiZhi: ["\u5b50", "\u5b50", "\u5bc5", "\u8fb0", "\u672a", "\u4e11", "\u536f", "\u5df3"],
+  WaiGuaFirstDiZhi: ["\u5348", "\u5348", "\u7533", "\u620c", "\u4e11", "\u672a", "\u9149", "\u4ea5"],
   /**
    * 十二长生速查表<=>长生
    * @Array Of Property
@@ -1122,79 +1122,21 @@ var liuyao = {
    * @Map Of Property
    * @return Cn string
    */
-  GuaDict: new Map([
-    [0b111111, "\u4e7e\u4e3a\u5929"],
-    [0b111110, "\u5929\u98ce\u59e4"],
-    [0b111100, "\u5929\u5c71\u9041"],
-    [0b111000, "\u5929\u5730\u5426"],
-    [0b110000, "\u98ce\u5730\u89c2"],
-    [0b100000, "\u5c71\u5730\u5265"],
-    [0b101000, "\u706b\u5730\u664b"],
-    [0b101111, "\u706b\u5929\u5927\u6709"],
+  GuaDict: new Map([[0b111111, "\u4e7e\u4e3a\u5929"], [0b111110, "\u5929\u98ce\u59e4"], [0b111100, "\u5929\u5c71\u9041"], [0b111000, "\u5929\u5730\u5426"], [0b110000, "\u98ce\u5730\u89c2"], [0b100000, "\u5c71\u5730\u5265"], [0b101000, "\u706b\u5730\u664b"], [0b101111, "\u706b\u5929\u5927\u6709"],
 
-    [0b001001, "\u9707\u4e3a\u96f7"],
-    [0b001000, "\u96f7\u5730\u8c6b"],
-    [0b001010, "\u96f7\u6c34\u89e3"],
-    [0b001110, "\u96f7\u98ce\u6052"],
-    [0b000110, "\u5730\u98ce\u5347"],
-    [0b010110, "\u6c34\u98ce\u4e95"],
-    [0b011110, "\u6cfd\u98ce\u5927\u8fc7"],
-    [0b011001, "\u6cfd\u96f7\u968f"],
+    [0b001001, "\u9707\u4e3a\u96f7"], [0b001000, "\u96f7\u5730\u8c6b"], [0b001010, "\u96f7\u6c34\u89e3"], [0b001110, "\u96f7\u98ce\u6052"], [0b000110, "\u5730\u98ce\u5347"], [0b010110, "\u6c34\u98ce\u4e95"], [0b011110, "\u6cfd\u98ce\u5927\u8fc7"], [0b011001, "\u6cfd\u96f7\u968f"],
 
-    [0b010010, "\u574e\u4e3a\u6c34"],
-    [0b010011, "\u6c34\u6cfd\u8282"],
-    [0b010001, "\u6c34\u96f7\u5c6f"],
-    [0b010101, "\u6c34\u706b\u65e2\u6d4e"],
-    [0b011101, "\u6cfd\u706b\u9769"],
-    [0b001101, "\u96f7\u706b\u4e30"],
-    [0b000101, "\u5730\u706b\u660e\u5937"],
-    [0b000010, "\u5730\u6c34\u5e08"],
+    [0b010010, "\u574e\u4e3a\u6c34"], [0b010011, "\u6c34\u6cfd\u8282"], [0b010001, "\u6c34\u96f7\u5c6f"], [0b010101, "\u6c34\u706b\u65e2\u6d4e"], [0b011101, "\u6cfd\u706b\u9769"], [0b001101, "\u96f7\u706b\u4e30"], [0b000101, "\u5730\u706b\u660e\u5937"], [0b000010, "\u5730\u6c34\u5e08"],
 
-    [0b100100, "\u826e\u4e3a\u5c71"],
-    [0b100101, "\u5c71\u706b\u8d32"],
-    [0b100111, "\u5c71\u5929\u5927\u755c"],
-    [0b100011, "\u5c71\u6cfd\u635f"],
-    [0b101011, "\u706b\u6cfd\u777d"],
-    [0b111011, "\u5929\u6cfd\u5c65"],
-    [0b110011, "\u98ce\u6cfd\u4e2d\u5b5a"],
-    [0b110100, "\u98ce\u5c71\u6e10"],
+    [0b100100, "\u826e\u4e3a\u5c71"], [0b100101, "\u5c71\u706b\u8d32"], [0b100111, "\u5c71\u5929\u5927\u755c"], [0b100011, "\u5c71\u6cfd\u635f"], [0b101011, "\u706b\u6cfd\u777d"], [0b111011, "\u5929\u6cfd\u5c65"], [0b110011, "\u98ce\u6cfd\u4e2d\u5b5a"], [0b110100, "\u98ce\u5c71\u6e10"],
 
-    [0b000000, "\u5764\u4e3a\u5730"],
-    [0b000001, "\u5730\u96f7\u590d"],
-    [0b000011, "\u5730\u6cfd\u4e34"],
-    [0b000111, "\u5730\u5929\u6cf0"],
-    [0b001111, "\u96f7\u5929\u5927\u58ee"],
-    [0b011111, "\u6cfd\u5929\u592c"],
-    [0b010111, "\u6c34\u5929\u9700"],
-    [0b010000, "\u6c34\u5730\u6bd4"],
+    [0b000000, "\u5764\u4e3a\u5730"], [0b000001, "\u5730\u96f7\u590d"], [0b000011, "\u5730\u6cfd\u4e34"], [0b000111, "\u5730\u5929\u6cf0"], [0b001111, "\u96f7\u5929\u5927\u58ee"], [0b011111, "\u6cfd\u5929\u592c"], [0b010111, "\u6c34\u5929\u9700"], [0b010000, "\u6c34\u5730\u6bd4"],
 
-    [0b110110, "\u5dfd\u4e3a\u98ce"],
-    [0b110111, "\u98ce\u5929\u5c0f\u755c"],
-    [0b110101, "\u98ce\u706b\u5bb6\u4eba"],
-    [0b110001, "\u98ce\u96f7\u76ca"],
-    [0b111001, "\u5929\u96f7\u65e0\u5984"],
-    [0b101001, "\u706b\u96f7\u566c\u55d1"],
-    [0b100001, "\u5c71\u96f7\u9890"],
-    [0b100110, "\u5c71\u98ce\u86ca"],
+    [0b110110, "\u5dfd\u4e3a\u98ce"], [0b110111, "\u98ce\u5929\u5c0f\u755c"], [0b110101, "\u98ce\u706b\u5bb6\u4eba"], [0b110001, "\u98ce\u96f7\u76ca"], [0b111001, "\u5929\u96f7\u65e0\u5984"], [0b101001, "\u706b\u96f7\u566c\u55d1"], [0b100001, "\u5c71\u96f7\u9890"], [0b100110, "\u5c71\u98ce\u86ca"],
 
-    [0b101101, "\u79bb\u4e3a\u706b"],
-    [0b101100, "\u706b\u5c71\u65c5"],
-    [0b101110, "\u706b\u98ce\u9f0e"],
-    [0b101010, "\u706b\u6c34\u672a\u6d4e"],
-    [0b100010, "\u5c71\u6c34\u8499"],
-    [0b110010, "\u98ce\u6c34\u6da3"],
-    [0b111010, "\u5929\u6c34\u8bbc"],
-    [0b111101, "\u5929\u706b\u540c\u4eba"],
+    [0b101101, "\u79bb\u4e3a\u706b"], [0b101100, "\u706b\u5c71\u65c5"], [0b101110, "\u706b\u98ce\u9f0e"], [0b101010, "\u706b\u6c34\u672a\u6d4e"], [0b100010, "\u5c71\u6c34\u8499"], [0b110010, "\u98ce\u6c34\u6da3"], [0b111010, "\u5929\u6c34\u8bbc"], [0b111101, "\u5929\u706b\u540c\u4eba"],
 
-    [0b011011, "\u5151\u4e3a\u6cfd"],
-    [0b011010, "\u6cfd\u6c34\u56f0"],
-    [0b011000, "\u6cfd\u5730\u8403"],
-    [0b011100, "\u6cfd\u5c71\u54b8"],
-    [0b010100, "\u6c34\u5c71\u8e47"],
-    [0b000100, "\u5730\u5c71\u8c26"],
-    [0b001100, "\u96f7\u5c71\u5c0f\u8fc7"],
-    [0b001011, "\u96f7\u6cfd\u5f52\u59b9"],
-  ]),
+    [0b011011, "\u5151\u4e3a\u6cfd"], [0b011010, "\u6cfd\u6c34\u56f0"], [0b011000, "\u6cfd\u5730\u8403"], [0b011100, "\u6cfd\u5c71\u54b8"], [0b010100, "\u6c34\u5c71\u8e47"], [0b000100, "\u5730\u5c71\u8c26"], [0b001100, "\u96f7\u5c71\u5c0f\u8fc7"], [0b001011, "\u96f7\u6cfd\u5f52\u59b9"],]),
 
   /**
    * 随机取数，正为3，反为2,从左向右是每组先后顺序
@@ -1220,8 +1162,7 @@ var liuyao = {
     let guaKeyArray = liuyao.GetGuaKey(guaArray);
     let guaItem = liuyao.GetGuaItem(guaKeyArray);
     let result = {
-      "name": guaItem.length > 1 ? guaItem[0].name + ' ' + guaItem[1].name : guaItem[0].name,
-      "guaItem": guaItem,
+      "name": guaItem.length > 1 ? guaItem[0].name + ' ' + guaItem[1].name : guaItem[0].name, "guaItem": guaItem,
     };
     return result
   },
@@ -1249,7 +1190,7 @@ var liuyao = {
   },
 
   GetGuaItem: function (guaKeyArray) {
-    const guaItemArray= [];
+    const guaItemArray = [];
 
     for (let i = 0; i < guaKeyArray.length; i++) {
       let guaKey = guaKeyArray[i];
@@ -1260,14 +1201,14 @@ var liuyao = {
       let guaWuXingArray = liuyao.GetGuaWuXing(guaDiZhiArray);
       let benGongKey = guaDictKeys[guaIndex - guaGroupIndex];
       let benGongWuXing = liuyao.BaGuaWuxing[liuyao.BaGua.indexOf(benGongKey & 0b111)];
-      if(i !== 0){
+      if (i !== 0) {
         benGongKey = guaItemArray[0].benGongKey;
         benGongWuXing = guaItemArray[0].benGongWuXing;
       }
-      let shiIndex = liuyao.GetShi(guaKey,guaGroupIndex === 0,guaGroupIndex === 6,guaGroupIndex === 7);
-      let liuQinArray = liuyao.GetLiuQin(guaWuXingArray,benGongWuXing);
-      let fuShenArray = liuyao.GetFuShen(liuQinArray,benGongKey);
-      const guaItemObj =  {
+      let shiIndex = liuyao.GetShi(guaKey, guaGroupIndex === 0, guaGroupIndex === 6, guaGroupIndex === 7);
+      let liuQinArray = liuyao.GetLiuQin(guaWuXingArray, benGongWuXing);
+      let fuShenArray = liuyao.GetFuShen(liuQinArray, benGongKey);
+      const guaItemObj = {
         "index": guaIndex + 1,
         "key": guaKey.toString(2).padStart(6, '0'),
         "groupIndex": guaGroupIndex + 1,
@@ -1281,7 +1222,7 @@ var liuyao = {
         "isFuShen": i !== 0 ? undefined : !fuShenArray.every(item => item === undefined),
         "fuShen": i !== 0 ? undefined : fuShenArray,
         "shiIndex": i !== 0 ? guaItemArray[0].shiIndex : shiIndex,
-        "yingIndex": i !== 0 ? guaItemArray[0].yingIndex :(shiIndex + 2) % 6,
+        "yingIndex": i !== 0 ? guaItemArray[0].yingIndex : (shiIndex + 2) % 6,
         "isBenGong": guaGroupIndex === 0,
         "isLiuChong": guaGroupIndex === 0 || guaKey === 0b111001 || guaKey === 0b001111,
         "isLiuHe": guaGroupIndex === 1,
@@ -1299,10 +1240,7 @@ var liuyao = {
     let neiGuaTianGan = liuyao.NeiGuaTianGan[liuyao.BaGua.indexOf(neiGua)];
     let waiGuaTianGan = liuyao.WaiGuaTianGan[liuyao.BaGua.indexOf(waiGua)];
 
-    return [
-      neiGuaTianGan,neiGuaTianGan,neiGuaTianGan,
-      waiGuaTianGan,waiGuaTianGan,waiGuaTianGan
-    ]
+    return [neiGuaTianGan, neiGuaTianGan, neiGuaTianGan, waiGuaTianGan, waiGuaTianGan, waiGuaTianGan]
   },
 
   GetGuaDiZhi: function (guaKey) {
@@ -1315,55 +1253,41 @@ var liuyao = {
     let neiGuaFirstDiZhiInedx = liuyao.DiZhi.indexOf(neiGuaFirstDiZhi);
     let waiGuaFirstDiZhiInedx = liuyao.DiZhi.indexOf(waiGuaFirstDiZhi);
 
-    return [
-      neiGuaFirstDiZhi,
-      neiGuaIndex <= 3 ? liuyao.DiZhi[(neiGuaFirstDiZhiInedx + 2) % 12] : liuyao.DiZhi[((neiGuaFirstDiZhiInedx - 2) > 0 ? (neiGuaFirstDiZhiInedx - 2) : (12 + neiGuaFirstDiZhiInedx - 2)) % 12],
-      neiGuaIndex <= 3 ? liuyao.DiZhi[(neiGuaFirstDiZhiInedx + 4) % 12] : liuyao.DiZhi[((neiGuaFirstDiZhiInedx - 4) > 0 ? (neiGuaFirstDiZhiInedx - 4) : (12 + neiGuaFirstDiZhiInedx - 4)) % 12],
-      waiGuaFirstDiZhi,
-      waiGuaIndex <= 3 ? liuyao.DiZhi[(waiGuaFirstDiZhiInedx + 2) % 12] : liuyao.DiZhi[((waiGuaFirstDiZhiInedx - 2) > 0 ? (waiGuaFirstDiZhiInedx - 2) : (12 + waiGuaFirstDiZhiInedx - 2)) % 12],
-      waiGuaIndex <= 3 ? liuyao.DiZhi[(waiGuaFirstDiZhiInedx + 4) % 12] : liuyao.DiZhi[((waiGuaFirstDiZhiInedx - 4) > 0 ? (waiGuaFirstDiZhiInedx - 4) : (12 + waiGuaFirstDiZhiInedx - 4)) % 12],
-    ];
+    return [neiGuaFirstDiZhi, neiGuaIndex <= 3 ? liuyao.DiZhi[(neiGuaFirstDiZhiInedx + 2) % 12] : liuyao.DiZhi[((neiGuaFirstDiZhiInedx - 2) > 0 ? (neiGuaFirstDiZhiInedx - 2) : (12 + neiGuaFirstDiZhiInedx - 2)) % 12], neiGuaIndex <= 3 ? liuyao.DiZhi[(neiGuaFirstDiZhiInedx + 4) % 12] : liuyao.DiZhi[((neiGuaFirstDiZhiInedx - 4) > 0 ? (neiGuaFirstDiZhiInedx - 4) : (12 + neiGuaFirstDiZhiInedx - 4)) % 12], waiGuaFirstDiZhi, waiGuaIndex <= 3 ? liuyao.DiZhi[(waiGuaFirstDiZhiInedx + 2) % 12] : liuyao.DiZhi[((waiGuaFirstDiZhiInedx - 2) > 0 ? (waiGuaFirstDiZhiInedx - 2) : (12 + waiGuaFirstDiZhiInedx - 2)) % 12], waiGuaIndex <= 3 ? liuyao.DiZhi[(waiGuaFirstDiZhiInedx + 4) % 12] : liuyao.DiZhi[((waiGuaFirstDiZhiInedx - 4) > 0 ? (waiGuaFirstDiZhiInedx - 4) : (12 + waiGuaFirstDiZhiInedx - 4)) % 12],];
   },
 
   GetGuaWuXing: function (guaDiZhi) {
-    return [
-      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[0])],
-      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[1])],
-      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[2])],
-      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[3])],
-      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[4])],
-      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[5])]
-    ]
+    return [liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[0])], liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[1])], liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[2])], liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[3])], liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[4])], liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[5])]]
   },
 
-  GetLiuQin: function (guaWuXing,benGongWuXing) {
+  GetLiuQin: function (guaWuXing, benGongWuXing) {
     let benGongWuXingIndex = liuyao.WuXing.indexOf(benGongWuXing);
     const liuQinArray = []
     for (let i = 0; i < guaWuXing.length; i++) {
       let yaoWuXingIndex = liuyao.WuXing.indexOf(guaWuXing[i]);
-      if(yaoWuXingIndex === benGongWuXingIndex){
+      if (yaoWuXingIndex === benGongWuXingIndex) {
         liuQinArray[i] = liuyao.LiuQin[1]
-      }else if(yaoWuXingIndex === ((5 + benGongWuXingIndex + 1) % 5)){
+      } else if (yaoWuXingIndex === ((5 + benGongWuXingIndex + 1) % 5)) {
         liuQinArray[i] = liuyao.LiuQin[2]
-      }else if(yaoWuXingIndex === ((5 + benGongWuXingIndex + 2) % 5)){
+      } else if (yaoWuXingIndex === ((5 + benGongWuXingIndex + 2) % 5)) {
         liuQinArray[i] = liuyao.LiuQin[3]
-      }else if(yaoWuXingIndex === ((5 + benGongWuXingIndex + 3) % 5)){
+      } else if (yaoWuXingIndex === ((5 + benGongWuXingIndex + 3) % 5)) {
         liuQinArray[i] = liuyao.LiuQin[4]
-      }else if(yaoWuXingIndex === ((5 + benGongWuXingIndex + 4) % 5)){
+      } else if (yaoWuXingIndex === ((5 + benGongWuXingIndex + 4) % 5)) {
         liuQinArray[i] = liuyao.LiuQin[0]
       }
     }
     return liuQinArray;
   },
 
-  GetShi: function (guaKey,isBenGong,isYouHun,isGuiHun) {
-    if(isBenGong){
+  GetShi: function (guaKey, isBenGong, isYouHun, isGuiHun) {
+    if (isBenGong) {
       return 6
     }
-    if(isYouHun){
+    if (isYouHun) {
       return 4
     }
-    if(isGuiHun){
+    if (isGuiHun) {
       return 3
     }
     let neiGua = guaKey & 0b111;
@@ -1373,30 +1297,30 @@ var liuyao = {
     let isRenTong = (neiGua >> 1) & 0b1 === (waiGua >> 1) & 0b1;
     let isDiTong = neiGua & 0b1 === waiGua & 0b1;
 
-    if(!isTianTong && !isRenTong && !isDiTong){
-      return  3
+    if (!isTianTong && !isRenTong && !isDiTong) {
+      return 3
     }
 
-    if(isTianTong && !isRenTong && !isDiTong){
-      return  2
-    }else if(!isTianTong && isRenTong && isDiTong){
+    if (isTianTong && !isRenTong && !isDiTong) {
+      return 2
+    } else if (!isTianTong && isRenTong && isDiTong) {
       return 5
     }
-    if(!isTianTong && !isRenTong && isDiTong){
+    if (!isTianTong && !isRenTong && isDiTong) {
       return 4
-    }else if(isTianTong && isRenTong && !isDiTong){
+    } else if (isTianTong && isRenTong && !isDiTong) {
       return 1
     }
   },
 
-  GetFuShen: function (liuQinArray,benGongKey) {
+  GetFuShen: function (liuQinArray, benGongKey) {
     const fuShenArray = [];
     let benGongGuaWuXing = liuyao.BaGuaWuxing[liuyao.BaGua.indexOf(benGongKey & 0b111)]
-    let benGongLiuQin = liuyao.GetLiuQin(liuyao.GetGuaWuXing(liuyao.GetGuaDiZhi(benGongKey)),benGongGuaWuXing);
+    let benGongLiuQin = liuyao.GetLiuQin(liuyao.GetGuaWuXing(liuyao.GetGuaDiZhi(benGongKey)), benGongGuaWuXing);
     for (let i = 0; i < benGongLiuQin.length; i++) {
       if (liuQinArray.indexOf(benGongLiuQin[i]) === -1) {
         fuShenArray[i] = benGongLiuQin[i];
-      }else{
+      } else {
         fuShenArray[i] = undefined;
       }
     }
