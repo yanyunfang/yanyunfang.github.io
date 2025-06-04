@@ -126,7 +126,7 @@
         
   
   <div class="sidebar-category animated fadeInUp">
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%91%84%E5%BD%B1/">摄影</a><span class="category-list-count">1</span></li></ul>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a><span class="category-list-count">1</span></li></ul>
   </div>
 
   <aside class="sidebar">
@@ -156,18 +156,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">1</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -203,10 +203,10 @@
       
       <div class="post-body"><div class="tag-cloud">
   <div class="tag-cloud-title">
-    目前共计 2 个标签
+    目前共计 1 个标签
   </div>
   <div class="tag-cloud-tags">
-    <a href="/tags/hexo/" style="font-size: 12px;" class="tag-cloud-0">hexo</a> <a href="/tags/%E6%91%84%E5%BD%B1/" style="font-size: 12px;" class="tag-cloud-0">摄影</a>
+    <a href="/tags/hexo/" style="font-size: 12px;" class="tag-cloud-0">hexo</a>
   </div>
 </div>
 
@@ -287,9 +287,9 @@
   const hours = now.getHours();       // 获取小时（0-23）
   const dateJson = calendar.solar2lunar(year,month,day,hours)
 
-  const gua = calendar.getGua()
+  const gua = liuyao.GetGua(liuyao.GetGuaRandom())
 
-  span.textContent = dateJson.gzYear + " " +dateJson.gzMonth + " " +dateJson.gzDay + " " +dateJson.gzHour + " " + gua;
+  span.textContent = dateJson.gzYear + " " +dateJson.gzMonth + " " +dateJson.gzDay + " " +dateJson.gzHour + " " + gua.name;
 
 </script>
 

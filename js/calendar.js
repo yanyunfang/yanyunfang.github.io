@@ -95,7 +95,6 @@ var calendar = {
    */
 
   Zhi: ["\u5b50", "\u4e11", "\u5bc5", "\u536f", "\u8fb0", "\u5df3", "\u5348", "\u672a", "\u7533", "\u9149", "\u620c", "\u4ea5"],
-
   /**
 
    * 天干地支之地支速查表<=>生肖
@@ -310,105 +309,6 @@ var calendar = {
 
   nStr3: ["\u6b63", "\u4e8c", "\u4e09", "\u56db", "\u4e94", "\u516d", "\u4e03", "\u516b", "\u4e5d", "\u5341", "\u51ac", "\u814a"],
 
-  guaDict: {
-    "111111": "\u4e7e\u4e3a\u5929",
-    "011111": "\u5929\u98ce\u59e4",
-    "001111": "\u5929\u5c71\u9041",
-    "000111": "\u5929\u5730\u5426",
-    "000011": "\u98ce\u5730\u89c2",
-    "000001": "\u5c71\u5730\u5265",
-    "000101": "\u706b\u5730\u664b",
-    "111101": "\u706b\u5929\u5927\u6709",
-
-    "110110": "\u5151\u4e3a\u6cfd",
-    "010110": "\u6cfd\u6c34\u56f0",
-    "000110": "\u6cfd\u5730\u8403",
-    "001110": "\u6cfd\u5c71\u54b8",
-    "001010": "\u6c34\u5c71\u8e47",
-    "001000": "\u5730\u5c71\u8c26",
-    "001100": "\u96f7\u5c71\u5c0f\u8fc7",
-    "110100": "\u96f7\u6cfd\u5f52\u59b9",
-
-    "101101": "\u79bb\u4e3a\u706b",
-    "001101": "\u706b\u5c71\u65c5",
-    "011101": "\u706b\u98ce\u9f0e",
-    "010101": "\u706b\u6c34\u672a\u6d4e",
-    "010001": "\u5c71\u6c34\u8499",
-    "010011": "\u98ce\u6c34\u6da3",
-    "010111": "\u5929\u6c34\u8bbc",
-    "101111": "\u5929\u706b\u540c\u4eba",
-
-    "100100": "\u9707\u4e3a\u96f7",
-    "000100": "\u96f7\u5730\u8c6b",
-    "010100": "\u96f7\u6c34\u89e3",
-    "011100": "\u96f7\u98ce\u6052",
-    "011000": "\u5730\u98ce\u5347",
-    "011010": "\u6c34\u98ce\u4e95",
-    "011110": "\u6cfd\u98ce\u5927\u8fc7",
-    "100110": "\u6cfd\u96f7\u968f",
-
-    "011011": "\u5dfd\u4e3a\u98ce",
-    "111011": "\u98ce\u5929\u5c0f\u755c",
-    "101011": "\u98ce\u706b\u5bb6\u4eba",
-    "100011": "\u98ce\u96f7\u76ca",
-    "100111": "\u5929\u96f7\u65e0\u5984",
-    "100101": "\u706b\u96f7\u566c\u55d1",
-    "100001": "\u5c71\u96f7\u9890",
-    "011001": "\u5c71\u98ce\u86ca",
-
-    "010010": "\u574e\u4e3a\u6c34",
-    "110010": "\u6c34\u6cfd\u8282",
-    "100010": "\u6c34\u96f7\u5c6f",
-    "101010": "\u6c34\u706b\u65e2\u6d4e",
-    "101110": "\u6cfd\u706b\u9769",
-    "101100": "\u96f7\u706b\u4e30",
-    "101000": "\u5730\u706b\u660e\u5937",
-    "010000": "\u5730\u6c34\u5e08",
-
-    "001001": "\u826e\u4e3a\u5c71",
-    "101001": "\u5c71\u706b\u8d32",
-    "111001": "\u5c71\u5929\u5927\u755c",
-    "110001": "\u5c71\u6cfd\u635f",
-    "110101": "\u706b\u6cfd\u777d",
-    "110111": "\u5929\u6cfd\u5c65",
-    "110011": "\u98ce\u6cfd\u4e2d\u5b5a",
-    "001011": "\u98ce\u5c71\u6e10",
-
-    "000000": "\u5764\u4e3a\u5730",
-    "100000": "\u5730\u96f7\u590d",
-    "110000": "\u5730\u6cfd\u4e34",
-    "111000": "\u5730\u5929\u6cf0",
-    "111100": "\u96f7\u5929\u5927\u58ee",
-    "111110": "\u6cfd\u5929\u592e",
-    "111010": "\u6c34\u5929\u9700",
-    "000010": "\u6c34\u5730\u6bd4",
-  },
-
-  getGua: function () {
-    let benyao = '';
-    let bianyao = '';
-    for (let j = 0; j < 6; j++) {
-      let y = 0;
-      for (let i = 0; i < 3; i++) {
-        y += Math.random() >= 0.5 ? 3 : 2; // 随机加3或2
-      }
-      if(y % 2 === 0){
-        benyao += '0'
-        bianyao += y === 6 ? "1" : "0"
-      }else{
-        benyao += '1'
-        bianyao += y === 9 ? "0" : "1"
-      }
-    }
-    let bengua = calendar.guaDict[benyao];
-    let biangua = calendar.guaDict[bianyao];
-    if(bengua !== biangua){
-      return bengua + " " + biangua
-    }else{
-      return bengua
-    }
-  },
-
   /**
 
    * 返回农历y年一整年的总天数
@@ -602,7 +502,7 @@ var calendar = {
    */
   toDiZhi: function (h) {
     //地支 + "时"
-    return calendar.Zhi[ Math.floor((h + 1) / 2) % 12 ] + "\u65F6"
+    return calendar.Zhi[Math.floor((h + 1) / 2) % 12] + "\u65F6"
   },
   /**
 
@@ -1116,3 +1016,385 @@ var calendar = {
 
   }
 };
+
+var liuyao = {
+
+  /**
+
+   * 天干地支之天干速查表
+
+   * @Array Of Property trans["甲","乙","丙","丁","戊","己","庚","辛","壬","癸"]
+
+   * @return Cn string
+
+   */
+
+  TianGan: ["\u7532", "\u4e59", "\u4e19", "\u4e01", "\u620a", "\u5df1", "\u5e9a", "\u8f9b", "\u58ec", "\u7678"],
+
+  GanWuxing: ["\u7532", "\u4e59", "\u4e19", "\u4e01", "\u620a", "\u5df1", "\u5e9a", "\u8f9b", "\u58ec", "\u7678"],
+  /**
+
+   * 天干地支之地支速查表
+
+   * @Array Of Property
+
+   * @trans["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"]
+
+   * @return Cn string
+
+   */
+
+  DiZhi: ["\u5b50", "\u4e11", "\u5bc5", "\u536f", "\u8fb0", "\u5df3", "\u5348", "\u672a", "\u7533", "\u9149", "\u620c", "\u4ea5"],
+
+  ZhiWuxing: ["\u6c34", "\u571f", "\u6728", "\u6728", "\u571f", "\u706b", "\u706b", "\u571f", "\u91d1", "\u91d1", "\u571f", "\u6c34"],
+
+  /**
+   * 五行生成顺序速查表<=>五行
+   * @Array Of Property
+   * @trans["木","火","土","金","水"]
+   * @return Cn string
+   */
+  WuXing: ["\u6728","\u706b","\u571f","\u91d1","\u6c34"],
+
+  BaGua: [0b111,0b001,0b010,0b100,0b000,0b110,0b101,0b011],
+
+  /**
+   * 八卦速查表<=>八卦
+   * @Array Of Property
+   * @trans["乾","震","坎","艮","坤","巽","离","兑"]
+   * @return Cn string
+   */
+  BaGuaName: ["\u4e7e", "\u9707", "\u574e", "\u826e", "\u5764", "\u5dfd", "\u79bb", "\u5151"],
+
+  /**
+   * 八卦象速查表<=>八卦象
+   * @Array Of Property
+   * @trans["天","雷","水","山","地","风","火","泽"]
+   * @return Cn string
+   */
+  BaGuaXiang: ["\u5929", "\u96f7", "\u6c34", "\u5c71", "\u5730", "\u98ce", "\u706b", "\u6cfd"],
+
+  /**
+   * 八卦属性速查表<=>八卦属性
+   * @Array Of Property
+   * @trans["金","木","水","土","土","木","火","金"]
+   * @return Cn string
+   */
+  BaGuaWuxing: ["\u91d1","\u6728","\u6c34","\u571f","\u571f","\u6728","\u706b","\u91d1"],
+
+  NeiGuaTianGan: ["\u7532","\u5e9a","\u620a","\u4e19","\u4e59","\u8f9b","\u5df1","\u4e01"],
+  WaiGuaTianGan: ["\u58ec","\u5e9a","\u620a","\u4e19","\u7678","\u8f9b","\u5df1","\u4e01"],
+
+  NeiGuaFirstDiZhi: ["\u5b50","\u5b50","\u5bc5","\u8fb0","\u672a","\u4e11","\u536f","\u5df3"],
+  WaiGuaFirstDiZhi: ["\u5348","\u5348","\u7533","\u620c","\u4e11","\u672a","\u9149","\u4ea5"],
+  /**
+   * 十二长生速查表<=>长生
+   * @Array Of Property
+   * @trans["长生","沐浴","冠带","临官","帝旺","衰","病","死","墓","绝","胎","养"]
+   * @return Cn string
+   */
+  ChangSheng: ["\u957f\u751f", "\u6c90\u6d74", "\u51a0\u5e26", "\u4e34\u5b98", "\u5e1d\u65fa", "\u8870", "\u75c5", "\u6b7b", "\u5893", "\u7edd", "\u80ce", "\u517b"],
+
+  /**
+   * 六神速查表<=>六神
+   * @Array Of Property
+   * @trans["青龙","朱雀","勾陈","腾蛇","白虎","玄武"]
+   * @return Cn string
+   */
+  LiuShen: ["\u9752\u9f99", "\u6731\u96c0", "\u52fe\u9648", "\u817e\u86c7", "\u767d\u864e", "\u7384\u6b66"],
+
+  /**
+   * 六亲速查表<=>六神
+   * @Array Of Property
+   * @trans["父母","兄弟","子孙","妻财","官鬼"]
+   * @return Cn string
+   */
+  LiuQin: ["\u7236\u6bcd", "\u5144\u5f1f", "\u5b50\u5b59", "\u59bb\u8d22", "\u5b98\u9b3c"],
+
+  /**
+   * 六十四卦名速查表，最右为初爻，1为阳，0为阴
+   * 乾内甲子外壬午 震内庚子外庚午 坎内戊寅外戊申 艮内丙辰外丙戌
+   * 坤内乙未外癸丑 巽内辛丑外辛未 离内已卯外己酉 兑内丁巳外丁亥
+   * 天同二世天异五 地同四世地异初 本宫六世三世异 游魂于四归于三
+   * 世在内卦外卦为卦宫，世在外卦内卦全变为卦宫，归魂外卦为卦宫
+   * @Map Of Property
+   * @return Cn string
+   */
+  GuaDict: new Map([
+    [0b111111, "\u4e7e\u4e3a\u5929"],
+    [0b111110, "\u5929\u98ce\u59e4"],
+    [0b111100, "\u5929\u5c71\u9041"],
+    [0b111000, "\u5929\u5730\u5426"],
+    [0b110000, "\u98ce\u5730\u89c2"],
+    [0b100000, "\u5c71\u5730\u5265"],
+    [0b101000, "\u706b\u5730\u664b"],
+    [0b101111, "\u706b\u5929\u5927\u6709"],
+
+    [0b001001, "\u9707\u4e3a\u96f7"],
+    [0b001000, "\u96f7\u5730\u8c6b"],
+    [0b001010, "\u96f7\u6c34\u89e3"],
+    [0b001110, "\u96f7\u98ce\u6052"],
+    [0b000110, "\u5730\u98ce\u5347"],
+    [0b010110, "\u6c34\u98ce\u4e95"],
+    [0b011110, "\u6cfd\u98ce\u5927\u8fc7"],
+    [0b011001, "\u6cfd\u96f7\u968f"],
+
+    [0b010010, "\u574e\u4e3a\u6c34"],
+    [0b010011, "\u6c34\u6cfd\u8282"],
+    [0b010001, "\u6c34\u96f7\u5c6f"],
+    [0b010101, "\u6c34\u706b\u65e2\u6d4e"],
+    [0b011101, "\u6cfd\u706b\u9769"],
+    [0b001101, "\u96f7\u706b\u4e30"],
+    [0b000101, "\u5730\u706b\u660e\u5937"],
+    [0b000010, "\u5730\u6c34\u5e08"],
+
+    [0b100100, "\u826e\u4e3a\u5c71"],
+    [0b100101, "\u5c71\u706b\u8d32"],
+    [0b100111, "\u5c71\u5929\u5927\u755c"],
+    [0b100011, "\u5c71\u6cfd\u635f"],
+    [0b101011, "\u706b\u6cfd\u777d"],
+    [0b111011, "\u5929\u6cfd\u5c65"],
+    [0b110011, "\u98ce\u6cfd\u4e2d\u5b5a"],
+    [0b110100, "\u98ce\u5c71\u6e10"],
+
+    [0b000000, "\u5764\u4e3a\u5730"],
+    [0b000001, "\u5730\u96f7\u590d"],
+    [0b000011, "\u5730\u6cfd\u4e34"],
+    [0b000111, "\u5730\u5929\u6cf0"],
+    [0b001111, "\u96f7\u5929\u5927\u58ee"],
+    [0b011111, "\u6cfd\u5929\u592c"],
+    [0b010111, "\u6c34\u5929\u9700"],
+    [0b010000, "\u6c34\u5730\u6bd4"],
+
+    [0b110110, "\u5dfd\u4e3a\u98ce"],
+    [0b110111, "\u98ce\u5929\u5c0f\u755c"],
+    [0b110101, "\u98ce\u706b\u5bb6\u4eba"],
+    [0b110001, "\u98ce\u96f7\u76ca"],
+    [0b111001, "\u5929\u96f7\u65e0\u5984"],
+    [0b101001, "\u706b\u96f7\u566c\u55d1"],
+    [0b100001, "\u5c71\u96f7\u9890"],
+    [0b100110, "\u5c71\u98ce\u86ca"],
+
+    [0b101101, "\u79bb\u4e3a\u706b"],
+    [0b101100, "\u706b\u5c71\u65c5"],
+    [0b101110, "\u706b\u98ce\u9f0e"],
+    [0b101010, "\u706b\u6c34\u672a\u6d4e"],
+    [0b100010, "\u5c71\u6c34\u8499"],
+    [0b110010, "\u98ce\u6c34\u6da3"],
+    [0b111010, "\u5929\u6c34\u8bbc"],
+    [0b111101, "\u5929\u706b\u540c\u4eba"],
+
+    [0b011011, "\u5151\u4e3a\u6cfd"],
+    [0b011010, "\u6cfd\u6c34\u56f0"],
+    [0b011000, "\u6cfd\u5730\u8403"],
+    [0b011100, "\u6cfd\u5c71\u54b8"],
+    [0b010100, "\u6c34\u5c71\u8e47"],
+    [0b000100, "\u5730\u5c71\u8c26"],
+    [0b001100, "\u96f7\u5c71\u5c0f\u8fc7"],
+    [0b001011, "\u96f7\u6cfd\u5f52\u59b9"],
+  ]),
+
+  /**
+   * 随机取数，正为3，反为2,从左向右是每组先后顺序
+   * GetGuaRandom return示例 [[2,3,3],[2,3,3],[2,3,3],[2,3,3],[2,3,3],[2,3,3]]
+   */
+  GetGuaRandom: function () {
+    const guaArray = [];
+    for (let i = 0; i < 6; i++) {
+      const yaoArray = [];
+      for (let j = 0; j < 3; j++) {
+        yaoArray[j] = Math.random() >= 0.5 ? 3 : 2; // 随机加3或2
+      }
+      guaArray[i] = yaoArray;
+    }
+    return guaArray;
+  },
+
+  GetGua: function (guaArray) {
+    let guaKeyArray = liuyao.GetGuaKey(guaArray);
+    let guaItem = liuyao.GetGuaItem(guaKeyArray);
+    let result = {
+      "name": guaItem.length > 1 ? guaItem[0].name + ' ' + guaItem[1].name : guaItem[0].name,
+      "guaItem": guaItem,
+    };
+    return result
+  },
+
+  GetGuaKey: function (guaArray) {
+    let bengua = 0;
+    let biangua = 0;
+    //从低位向高位装
+    for (let i = 0; i < guaArray.length; i++) {
+      let yao = 0;
+      let yaoArray = guaArray[i];
+      for (let j = 0; j < yaoArray.length; j++) {
+        yao += yaoArray[j];
+      }
+      if (yao % 2 === 0) {
+        bengua |= 0 << i;
+        biangua |= yao === 6 ? 1 << i : 0 << i;
+      } else {
+        bengua |= 1 << i;
+        biangua |= yao === 9 ? 0 << i : 1 << i;
+      }
+    }
+    let guaKeyArray = bengua !== biangua ? [bengua, biangua] : [bengua];
+    return guaKeyArray;
+  },
+
+  GetGuaItem: function (guaKeyArray) {
+    const guaItemArray= [];
+
+    for (let i = 0; i < guaKeyArray.length; i++) {
+      let guaKey = guaKeyArray[i];
+      let guaDictKeys = Array.from(liuyao.GuaDict.keys());
+      let guaIndex = guaDictKeys.indexOf(guaKey);
+      let guaGroupIndex = guaIndex % 8;
+      let guaDiZhiArray = liuyao.GetGuaDiZhi(guaKey);
+      let guaWuXingArray = liuyao.GetGuaWuXing(guaDiZhiArray);
+      let benGongKey = guaDictKeys[guaIndex - guaGroupIndex];
+      let benGongWuXing = liuyao.BaGuaWuxing[liuyao.BaGua.indexOf(benGongKey & 0b111)];
+      if(i !== 0){
+        benGongKey = guaItemArray[0].benGongKey;
+        benGongWuXing = guaItemArray[0].benGongWuXing;
+      }
+      let shiIndex = liuyao.GetShi(guaKey,guaGroupIndex === 0,guaGroupIndex === 6,guaGroupIndex === 7);
+      let liuQinArray = liuyao.GetLiuQin(guaWuXingArray,benGongWuXing);
+      let fuShenArray = liuyao.GetFuShen(liuQinArray,benGongKey);
+      const guaItemObj =  {
+        "index": guaIndex + 1,
+        "key": guaKey.toString(2).padStart(6, '0'),
+        "groupIndex": guaGroupIndex + 1,
+        "name": liuyao.GuaDict.get(guaKey),
+        "benGongKey": benGongKey.toString(2).padStart(6, '0'),
+        "benGongWuXing": benGongWuXing,
+        "tianGan": liuyao.GetGuaTianGan(guaKey),
+        "diZhi": guaDiZhiArray,
+        "wuXing": guaWuXingArray,
+        "liuQin": liuQinArray,
+        "isFuShen": i !== 0 ? undefined : !fuShenArray.every(item => item === null),
+        "fuShen": i !== 0 ? undefined : fuShenArray,
+        "shiIndex": i !== 0 ? guaItemArray[0].shiIndex : shiIndex,
+        "yingIndex": i !== 0 ? guaItemArray[0].yingIndex :(shiIndex + 2) % 6,
+        "isBenGong": guaGroupIndex === 0,
+        "isLiuChong": guaGroupIndex === 0 || guaKey === 0b111001 || guaKey === 0b001111,
+        "isLiuHe": guaGroupIndex === 1,
+        "isYouHun": guaGroupIndex === 6,
+        "isGuiHun": guaGroupIndex === 7,
+      }
+      guaItemArray[i] = guaItemObj
+    }
+    return guaItemArray;
+  },
+
+  GetGuaTianGan: function (guaKey) {
+    let neiGua = guaKey & 0b111;
+    let waiGua = (guaKey >> 3) & 0b111;
+    let neiGuaTianGan = liuyao.NeiGuaTianGan[liuyao.BaGua.indexOf(neiGua)];
+    let waiGuaTianGan = liuyao.WaiGuaTianGan[liuyao.BaGua.indexOf(waiGua)];
+
+    return [
+      neiGuaTianGan,neiGuaTianGan,neiGuaTianGan,
+      waiGuaTianGan,waiGuaTianGan,waiGuaTianGan
+    ]
+  },
+
+  GetGuaDiZhi: function (guaKey) {
+    let neiGua = guaKey & 0b111;
+    let waiGua = (guaKey >> 3) & 0b111;
+    let neiGuaIndex = liuyao.BaGua.indexOf(neiGua);
+    let waiGuaIndex = liuyao.BaGua.indexOf(waiGua);
+    let neiGuaFirstDiZhi = liuyao.NeiGuaFirstDiZhi[neiGuaIndex];
+    let waiGuaFirstDiZhi = liuyao.WaiGuaFirstDiZhi[waiGuaIndex];
+    let neiGuaFirstDiZhiInedx = liuyao.DiZhi.indexOf(neiGuaFirstDiZhi);
+    let waiGuaFirstDiZhiInedx = liuyao.DiZhi.indexOf(waiGuaFirstDiZhi);
+
+    return [
+      neiGuaFirstDiZhi,
+      neiGuaIndex <= 3 ? liuyao.DiZhi[(neiGuaFirstDiZhiInedx + 2) % 12] : liuyao.DiZhi[((neiGuaFirstDiZhiInedx - 2) > 0 ? (neiGuaFirstDiZhiInedx - 2) : (12 + neiGuaFirstDiZhiInedx - 2)) % 12],
+      neiGuaIndex <= 3 ? liuyao.DiZhi[(neiGuaFirstDiZhiInedx + 4) % 12] : liuyao.DiZhi[((neiGuaFirstDiZhiInedx - 4) > 0 ? (neiGuaFirstDiZhiInedx - 4) : (12 + neiGuaFirstDiZhiInedx - 4)) % 12],
+      waiGuaFirstDiZhi,
+      waiGuaIndex <= 3 ? liuyao.DiZhi[(waiGuaFirstDiZhiInedx + 2) % 12] : liuyao.DiZhi[((waiGuaFirstDiZhiInedx - 2) > 0 ? (waiGuaFirstDiZhiInedx - 2) : (12 + waiGuaFirstDiZhiInedx - 2)) % 12],
+      waiGuaIndex <= 3 ? liuyao.DiZhi[(waiGuaFirstDiZhiInedx + 4) % 12] : liuyao.DiZhi[((waiGuaFirstDiZhiInedx - 4) > 0 ? (waiGuaFirstDiZhiInedx - 4) : (12 + waiGuaFirstDiZhiInedx - 4)) % 12],
+    ];
+  },
+
+  GetGuaWuXing: function (guaDiZhi) {
+    return [
+      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[0])],
+      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[1])],
+      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[2])],
+      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[3])],
+      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[4])],
+      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[5])]
+    ]
+  },
+
+  GetLiuQin: function (guaWuXing,benGongWuXing) {
+    let benGongWuXingIndex = liuyao.WuXing.indexOf(benGongWuXing);
+    const liuQinArray = []
+    for (let i = 0; i < guaWuXing.length; i++) {
+      let yaoWuXingIndex = liuyao.WuXing.indexOf(guaWuXing[i]);
+      if(yaoWuXingIndex === benGongWuXingIndex){
+        liuQinArray[i] = liuyao.LiuQin[1]
+      }else if(yaoWuXingIndex === ((5 + benGongWuXingIndex + 1) % 5)){
+        liuQinArray[i] = liuyao.LiuQin[2]
+      }else if(yaoWuXingIndex === ((5 + benGongWuXingIndex + 2) % 5)){
+        liuQinArray[i] = liuyao.LiuQin[3]
+      }else if(yaoWuXingIndex === ((5 + benGongWuXingIndex + 3) % 5)){
+        liuQinArray[i] = liuyao.LiuQin[4]
+      }else if(yaoWuXingIndex === ((5 + benGongWuXingIndex + 4) % 5)){
+        liuQinArray[i] = liuyao.LiuQin[0]
+      }
+    }
+    return liuQinArray;
+  },
+
+  GetShi: function (guaKey,isBenGong,isYouHun,isGuiHun) {
+    if(isBenGong){
+      return 6
+    }
+    if(isYouHun){
+      return 4
+    }
+    if(isGuiHun){
+      return 3
+    }
+    let neiGua = guaKey & 0b111;
+    let waiGua = (guaKey >> 3) & 0b111;
+
+    let isTianTong = (neiGua >> 2) & 0b1 === (waiGua >> 2) & 0b1;
+    let isRenTong = (neiGua >> 1) & 0b1 === (waiGua >> 1) & 0b1;
+    let isDiTong = neiGua & 0b1 === waiGua & 0b1;
+
+    if(!isTianTong && !isRenTong && !isDiTong){
+      return  3
+    }
+
+    if(isTianTong && !isRenTong && !isDiTong){
+      return  2
+    }else if(!isTianTong && isRenTong && isDiTong){
+      return 5
+    }
+    if(!isTianTong && !isRenTong && isDiTong){
+      return 4
+    }else if(isTianTong && isRenTong && !isDiTong){
+      return 1
+    }
+  },
+
+  GetFuShen: function (liuQinArray,benGongKey) {
+    const fuShenArray = [];
+    let benGongGuaWuXing = liuyao.BaGuaWuxing[liuyao.BaGua.indexOf(benGongKey & 0b111)]
+    let benGongLiuQin = liuyao.GetLiuQin(liuyao.GetGuaWuXing(liuyao.GetGuaDiZhi(benGongKey)),benGongGuaWuXing);
+    for (let i = 0; i < benGongLiuQin.length; i++) {
+      if (liuQinArray.indexOf(benGongLiuQin[i]) === -1) {
+        fuShenArray[i] = benGongLiuQin[i];
+      }else{
+        fuShenArray[i] = null;
+      }
+    }
+    return fuShenArray
+  }
+};
+//console.log(liuyao.GetGua(liuyao.GetGuaRandom()))
