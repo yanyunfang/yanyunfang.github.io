@@ -1272,7 +1272,7 @@ var liuyao = {
         "diZhi": guaDiZhiArray,
         "wuXing": guaWuXingArray,
         "liuQin": liuQinArray,
-        "isFuShen": i !== 0 ? undefined : !fuShenArray.every(item => item === null),
+        "isFuShen": i !== 0 ? undefined : !fuShenArray.every(item => item === undefined),
         "fuShen": i !== 0 ? undefined : fuShenArray,
         "shiIndex": i !== 0 ? guaItemArray[0].shiIndex : shiIndex,
         "yingIndex": i !== 0 ? guaItemArray[0].yingIndex :(shiIndex + 2) % 6,
@@ -1391,10 +1391,10 @@ var liuyao = {
       if (liuQinArray.indexOf(benGongLiuQin[i]) === -1) {
         fuShenArray[i] = benGongLiuQin[i];
       }else{
-        fuShenArray[i] = null;
+        fuShenArray[i] = undefined;
       }
     }
     return fuShenArray
   }
 };
-//console.log(liuyao.GetGua(liuyao.GetGuaRandom()))
+console.log(liuyao.GetGua(liuyao.GetGuaRandom()))
