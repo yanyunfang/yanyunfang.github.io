@@ -493,16 +493,15 @@ var calendar = {
 
   /**
 
-   * 传入小时数，返回地支
+   * 传入offset偏移量返回地支
 
-   * @param h 小时数
+   * @param offset 相对子的偏移量
 
    * @return Cn hour
 
    */
-  toDiZhi: function (h) {
-    //地支 + "时"
-    return calendar.Zhi[Math.floor((h + 1) / 2) % 12] + "\u65F6"
+  toDiZhi: function (offset) {
+    return calendar.Zhi[offset % 12]
   },
   /**
 
@@ -702,6 +701,8 @@ var calendar = {
    * @param m solar month
 
    * @param d solar day
+   *
+   * @param h solar hour
 
    * @return JSON object
 
@@ -878,7 +879,7 @@ var calendar = {
 
     var gzD = calendar.toGanZhi(dayCyclical + d - 1);
 
-    var gzH = calendar.toDiZhi(h);
+    var gzH = calendar.toDiZhi(Math.floor((h + 1) / 2));
 
     //该日期所属的星座
 
@@ -894,10 +895,11 @@ var calendar = {
       'cYear': y,
       'cMonth': m,
       'cDay': d,
+      'cHour': h,
       'gzYear': gzY,
       'gzMonth': gzM,
       'gzDay': gzD,
-      'gzHour': gzH,
+      'gzHour': gzH + "\u65F6",
       'isToday': isToday,
       'isLeap': isLeap,
       'nWeek': nWeek,
@@ -1210,6 +1212,10 @@ var liuyao = {
     return guaArray;
   },
 
+  /**
+   * 获取一个六爻，可使用GetGuaRandom获取参数
+   * console.log(liuyao.GetGua(liuyao.GetGuaRandom()))
+   */
   GetGua: function (guaArray) {
     let guaKeyArray = liuyao.GetGuaKey(guaArray);
     let guaItem = liuyao.GetGuaItem(guaKeyArray);
@@ -1397,4 +1403,3 @@ var liuyao = {
     return fuShenArray
   }
 };
-console.log(liuyao.GetGua(liuyao.GetGuaRandom()))
