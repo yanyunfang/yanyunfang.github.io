@@ -1250,14 +1250,27 @@ var liuyao = {
     let waiGuaIndex = liuyao.BaGua.indexOf(waiGua);
     let neiGuaFirstDiZhi = liuyao.NeiGuaFirstDiZhi[neiGuaIndex];
     let waiGuaFirstDiZhi = liuyao.WaiGuaFirstDiZhi[waiGuaIndex];
-    let neiGuaFirstDiZhiInedx = liuyao.DiZhi.indexOf(neiGuaFirstDiZhi);
-    let waiGuaFirstDiZhiInedx = liuyao.DiZhi.indexOf(waiGuaFirstDiZhi);
+    let neiGuaFirstDiZhiIndex = liuyao.DiZhi.indexOf(neiGuaFirstDiZhi);
+    let waiGuaFirstDiZhiIndex = liuyao.DiZhi.indexOf(waiGuaFirstDiZhi);
 
-    return [neiGuaFirstDiZhi, neiGuaIndex <= 3 ? liuyao.DiZhi[(neiGuaFirstDiZhiInedx + 2) % 12] : liuyao.DiZhi[((neiGuaFirstDiZhiInedx - 2) > 0 ? (neiGuaFirstDiZhiInedx - 2) : (12 + neiGuaFirstDiZhiInedx - 2)) % 12], neiGuaIndex <= 3 ? liuyao.DiZhi[(neiGuaFirstDiZhiInedx + 4) % 12] : liuyao.DiZhi[((neiGuaFirstDiZhiInedx - 4) > 0 ? (neiGuaFirstDiZhiInedx - 4) : (12 + neiGuaFirstDiZhiInedx - 4)) % 12], waiGuaFirstDiZhi, waiGuaIndex <= 3 ? liuyao.DiZhi[(waiGuaFirstDiZhiInedx + 2) % 12] : liuyao.DiZhi[((waiGuaFirstDiZhiInedx - 2) > 0 ? (waiGuaFirstDiZhiInedx - 2) : (12 + waiGuaFirstDiZhiInedx - 2)) % 12], waiGuaIndex <= 3 ? liuyao.DiZhi[(waiGuaFirstDiZhiInedx + 4) % 12] : liuyao.DiZhi[((waiGuaFirstDiZhiInedx - 4) > 0 ? (waiGuaFirstDiZhiInedx - 4) : (12 + waiGuaFirstDiZhiInedx - 4)) % 12],];
+    return [
+      waiGuaIndex <= 3 ? liuyao.DiZhi[(waiGuaFirstDiZhiIndex + 4) % 12] : liuyao.DiZhi[((waiGuaFirstDiZhiIndex - 4) > 0 ? (waiGuaFirstDiZhiIndex - 4) : (12 + waiGuaFirstDiZhiIndex - 4)) % 12],
+      waiGuaIndex <= 3 ? liuyao.DiZhi[(waiGuaFirstDiZhiIndex + 2) % 12] : liuyao.DiZhi[((waiGuaFirstDiZhiIndex - 2) > 0 ? (waiGuaFirstDiZhiIndex - 2) : (12 + waiGuaFirstDiZhiIndex - 2)) % 12],
+      waiGuaFirstDiZhi,
+      neiGuaIndex <= 3 ? liuyao.DiZhi[(neiGuaFirstDiZhiIndex + 4) % 12] : liuyao.DiZhi[((neiGuaFirstDiZhiIndex - 4) > 0 ? (neiGuaFirstDiZhiIndex - 4) : (12 + neiGuaFirstDiZhiIndex - 4)) % 12],
+      neiGuaIndex <= 3 ? liuyao.DiZhi[(neiGuaFirstDiZhiIndex + 2) % 12] : liuyao.DiZhi[((neiGuaFirstDiZhiIndex - 2) > 0 ? (neiGuaFirstDiZhiIndex - 2) : (12 + neiGuaFirstDiZhiIndex - 2)) % 12],
+      neiGuaFirstDiZhi,
+     ];
   },
 
   GetGuaWuXing: function (guaDiZhi) {
-    return [liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[0])], liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[1])], liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[2])], liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[3])], liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[4])], liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[5])]]
+    return [
+      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[0])],
+      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[1])],
+      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[2])],
+      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[3])],
+      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[4])],
+      liuyao.ZhiWuxing[liuyao.DiZhi.indexOf(guaDiZhi[5])]]
   },
 
   GetLiuQin: function (guaWuXing, benGongWuXing) {
