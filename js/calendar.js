@@ -1106,7 +1106,7 @@ var liuyao = {
   LiuShen: ["\u9752\u9f99", "\u6731\u96c0", "\u52fe\u9648", "\u817e\u86c7", "\u767d\u864e", "\u7384\u6b66"],
 
   /**
-   * 六亲速查表<=>六神
+   * 六亲速查表<=>六亲
    * @Array Of Property
    * @trans["父母","兄弟","子孙","妻财","官鬼"]
    * @return Cn string
@@ -1201,10 +1201,7 @@ var liuyao = {
       let guaWuXingArray = liuyao.GetGuaWuXing(guaDiZhiArray);
       let benGongKey = guaDictKeys[guaIndex - guaGroupIndex];
       let benGongWuXing = liuyao.BaGuaWuxing[liuyao.BaGua.indexOf(benGongKey & 0b111)];
-      if (i !== 0) {
-        benGongKey = guaItemArray[0].benGongKey;
-        benGongWuXing = guaItemArray[0].benGongWuXing;
-      }
+      let benGongKeyStr = benGongKey.toString(2).padStart(6, '0')
       let shiIndex = liuyao.GetShi(guaKey, guaGroupIndex === 0, guaGroupIndex === 6, guaGroupIndex === 7);
       let liuQinArray = liuyao.GetLiuQin(guaWuXingArray, benGongWuXing);
       let fuShenArray = liuyao.GetFuShen(liuQinArray, benGongKey);
@@ -1213,16 +1210,18 @@ var liuyao = {
         "key": guaKey.toString(2).padStart(6, '0'),
         "groupIndex": guaGroupIndex + 1,
         "name": liuyao.GuaDict.get(guaKey),
-        "benGongKey": i !== 0 ? undefined : benGongKey.toString(2).padStart(6, '0'),
-        "benGongWuXing": i !== 0 ? undefined : benGongWuXing,
         "tianGan": liuyao.GetGuaTianGan(guaKey),
         "diZhi": guaDiZhiArray,
         "wuXing": guaWuXingArray,
         "liuQin": liuQinArray,
+        "benGongKey": i !== 0 ? undefined : benGongKeyStr,
+        "benGongName": i !== 0 ? undefined : liuyao.GuaDict.get(benGongKey),
+        "benGongWuXing": i !== 0 ? undefined : benGongWuXing,
+        "benGongDiZhi": i !== 0 ? undefined : liuyao.GetGuaDiZhi(benGongKeyStr),
         "isFuShen": i !== 0 ? undefined : !fuShenArray.every(item => item === undefined),
         "fuShen": i !== 0 ? undefined : fuShenArray,
-        "shiIndex": i !== 0 ? guaItemArray[0].shiIndex : shiIndex,
-        "yingIndex": i !== 0 ? guaItemArray[0].yingIndex : (shiIndex + 2) % 6,
+        "shiIndex": i !== 0 ? undefined : shiIndex,
+        "yingIndex": i !== 0 ? undefined : (shiIndex + 2) % 6,
         "isBenGong": guaGroupIndex === 0,
         "isLiuChong": guaGroupIndex === 0 || guaKey === 0b111001 || guaKey === 0b001111,
         "isLiuHe": guaGroupIndex === 1,
