@@ -1240,7 +1240,7 @@ var liuyao = {
     let neiGuaTianGan = liuyao.NeiGuaTianGan[liuyao.BaGua.indexOf(neiGua)];
     let waiGuaTianGan = liuyao.WaiGuaTianGan[liuyao.BaGua.indexOf(waiGua)];
 
-    return [neiGuaTianGan, neiGuaTianGan, neiGuaTianGan, waiGuaTianGan, waiGuaTianGan, waiGuaTianGan]
+    return [waiGuaTianGan, waiGuaTianGan, waiGuaTianGan,neiGuaTianGan, neiGuaTianGan, neiGuaTianGan ]
   },
 
   GetGuaDiZhi: function (guaKey) {
