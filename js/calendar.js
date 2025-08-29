@@ -1157,6 +1157,7 @@ var liuyao = {
   /**
    * 获取一个六爻，可使用GetGuaRandom获取参数
    * console.log(liuyao.GetGua(liuyao.GetGuaRandom()))
+   * console.log(liuyao.GetGua([[2,3,3],[2,3,3],[2,3,3],[2,3,3],[2,3,3],[2,3,3]]))
    */
   GetGua: function (guaArray) {
     let guaKeyArray = liuyao.GetGuaKey(guaArray);
@@ -1201,12 +1202,10 @@ var liuyao = {
       let guaWuXingArray = liuyao.GetGuaWuXing(guaDiZhiArray);
       let benGongKey = guaDictKeys[guaIndex - guaGroupIndex];
       let benGongWuXing = liuyao.BaGuaWuxing[liuyao.BaGua.indexOf(benGongKey & 0b111)];
-      let benGongKeyStr = benGongKey.toString(2).padStart(6, '0')
       let shiIndex = liuyao.GetShi(guaKey, guaGroupIndex === 0, guaGroupIndex === 6, guaGroupIndex === 7);
       let liuQinArray = liuyao.GetLiuQin(guaWuXingArray, benGongWuXing);
       let fuShenArray = liuyao.GetFuShen(liuQinArray, benGongKey);
       const guaItemObj = {
-        "index": guaIndex + 1,
         "key": guaKey.toString(2).padStart(6, '0'),
         "groupIndex": guaGroupIndex + 1,
         "name": liuyao.GuaDict.get(guaKey),
@@ -1214,14 +1213,14 @@ var liuyao = {
         "diZhi": guaDiZhiArray,
         "wuXing": guaWuXingArray,
         "liuQin": liuQinArray,
-        "benGongKey": i !== 0 ? undefined : benGongKeyStr,
-        "benGongName": i !== 0 ? undefined : liuyao.GuaDict.get(benGongKey),
-        "benGongWuXing": i !== 0 ? undefined : benGongWuXing,
-        "benGongDiZhi": i !== 0 ? undefined : liuyao.GetGuaDiZhi(benGongKeyStr),
-        "isFuShen": i !== 0 ? undefined : !fuShenArray.every(item => item === undefined),
-        "fuShen": i !== 0 ? undefined : fuShenArray,
         "shiIndex": i !== 0 ? undefined : shiIndex,
         "yingIndex": i !== 0 ? undefined : (shiIndex + 2) % 6,
+        "benGongKey": i !== 0 ? undefined : benGongKey.toString(2).padStart(6, '0'),
+        "benGongName": i !== 0 ? undefined : liuyao.GuaDict.get(benGongKey),
+        "benGongWuXing": i !== 0 ? undefined : benGongWuXing,
+        "benGongDiZhi": i !== 0 ? undefined : liuyao.GetGuaDiZhi(benGongKey),
+        "fuShen": i !== 0 ? undefined : fuShenArray,
+        "isFuShen": i !== 0 ? undefined : !fuShenArray.every(item => item === undefined),
         "isBenGong": guaGroupIndex === 0,
         "isLiuChong": guaGroupIndex === 0 || guaKey === 0b111001 || guaKey === 0b001111,
         "isLiuHe": guaGroupIndex === 1,
