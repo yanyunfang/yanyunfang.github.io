@@ -1276,17 +1276,8 @@ var liuyao = {
     const liuQinArray = []
     for (let i = 0; i < guaWuXing.length; i++) {
       let yaoWuXingIndex = liuyao.WuXing.indexOf(guaWuXing[i]);
-      if (yaoWuXingIndex === benGongWuXingIndex) {
-        liuQinArray[i] = liuyao.LiuQin[1]
-      } else if (yaoWuXingIndex === ((5 + benGongWuXingIndex + 1) % 5)) {
-        liuQinArray[i] = liuyao.LiuQin[2]
-      } else if (yaoWuXingIndex === ((5 + benGongWuXingIndex + 2) % 5)) {
-        liuQinArray[i] = liuyao.LiuQin[3]
-      } else if (yaoWuXingIndex === ((5 + benGongWuXingIndex + 3) % 5)) {
-        liuQinArray[i] = liuyao.LiuQin[4]
-      } else if (yaoWuXingIndex === ((5 + benGongWuXingIndex + 4) % 5)) {
-        liuQinArray[i] = liuyao.LiuQin[0]
-      }
+      let offset = (yaoWuXingIndex - benGongWuXingIndex + 5) % 5;
+      liuQinArray[i] = liuyao.LiuQin[(offset + 1) % 5];
     }
     return liuQinArray;
   },
