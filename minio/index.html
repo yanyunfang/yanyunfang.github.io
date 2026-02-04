@@ -29,7 +29,7 @@
 <meta property="og:description" content="访问                                                                                                  let s3Client &#x3D; null;     let uploaded">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-04T11:48:57.000Z">
-<meta property="article:modified_time" content="2026-02-04T07:51:31.985Z">
+<meta property="article:modified_time" content="2026-02-04T08:01:10.971Z">
 <meta property="article:author" content="yanyunfang">
 <meta name="twitter:card" content="summary">
 
@@ -467,7 +467,7 @@
         };
         s3Client.getSignedUrl('getObject', params, (err, url) => {
             if (err) {
-                updateStatus(`生成下载链接失败: ${err.message}`, 'error');
+                updateStatus(`生成下载链接失败: ${err}`, 'error');
             } else {
                 const a = document.createElement('a');
                 a.href = url;
@@ -485,7 +485,7 @@
             Key: fileName
         }, (err, data) => {
             if (err) {
-                updateStatus(`删除失败: ${err.message}`, 'error');
+                updateStatus(`删除失败: ${err}`, 'error');
             } else {
                 listFiles();
                 updateStatus(`${fileName} 已永久删除`, 'success');
