@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="codeva-g9ZIl4s0LZ">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"bokiboki.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="使用离线部署容器化k3s,docker,harbor。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="K3S部署">
+<meta property="og:url" content="https://bokiboki.top/34ca5b52/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="使用离线部署容器化k3s,docker,harbor。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bokiboki.top/34ca5b52/img.png">
+<meta property="og:image" content="https://bokiboki.top/34ca5b52/img2.png">
+<meta property="article:published_time" content="2025-08-29T08:10:23.000Z">
+<meta property="article:modified_time" content="2026-02-04T07:15:42.597Z">
+<meta property="article:author" content="yanyunfang">
+<meta property="article:tag" content="k8s">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bokiboki.top/34ca5b52/img.png">
+
+
+<link rel="canonical" href="https://bokiboki.top/34ca5b52/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://bokiboki.top/34ca5b52/","path":"34ca5b52/","title":"K3S部署"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>K3S部署 | </title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?ab75fcadf9bd0813271164b604f7cfd2"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <!-- <a target="_blank" rel="noopener" href="https://github.com/yanyunfang" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style> -->
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+      <img class="custom-logo-image" src="/images/logo3.png" alt="">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-news"><a href="/news/" rel="section"><i class="fas fa-radio fa-fw"></i>新闻</a></li><li class="menu-item menu-item-guide"><a href="/guide/" rel="section"><i class="fa fa-book fa-fw"></i>指导</a></li><li class="menu-item menu-item-minio"><a href="/minio/" rel="section"><i class="fa fa-cloud-upload fa-fw"></i>云盘</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <div class="sidebar-category animated fadeInUp">
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91/">开发</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%91%84%E5%BD%B1/">摄影</a><span class="category-list-count">1</span></li></ul>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#K3S%E9%83%A8%E7%BD%B2"><span class="nav-number">1.</span> <span class="nav-text">K3S部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kubernetes-dashboard%E6%8E%A7%E5%88%B6%E5%8F%B0%E9%83%A8%E7%BD%B2%EF%BC%8C%E6%AD%A4%E6%AD%A5%E9%AA%A4%E9%9D%9E%E7%A6%BB%E7%BA%BF"><span class="nav-number">2.</span> <span class="nav-text">kubernetes-dashboard控制台部署，此步骤非离线</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">yanyunfang</p>
+  <div class="site-description" itemprop="description">灵台无计逃神矢，风雨如磐暗故园。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://bokiboki.top/34ca5b52/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yanyunfang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="灵台无计逃神矢，风雨如磐暗故园。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="K3S部署 | ">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          K3S部署
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-08-29 16:10:23" itemprop="dateCreated datePublished" datetime="2025-08-29T16:10:23+08:00">2025-08-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-04 15:15:42" itemprop="dateModified" datetime="2026-02-04T15:15:42+08:00">2026-02-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>使用离线部署容器化k3s,docker,harbor。</p>
+<span id="more"></span>
+
+<h2 id="K3S部署"><a href="#K3S部署" class="headerlink" title="K3S部署"></a>K3S部署</h2><p>1.在<a target="_blank" rel="noopener" href="https://github.com/k3s-io/k3s.git%E4%B8%8B%E8%BD%BD%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2%E5%8C%85%EF%BC%8C%E5%8C%85%E6%8B%AC%E5%AF%B9%E5%BA%94%E6%9E%B6%E6%9E%84%E7%9A%84k3s%E5%92%8C%E9%95%9C%E5%83%8F%E5%8C%85k3s-airgap-images-amd64.tar.gz%E3%80%82">https://github.com/k3s-io/k3s.git下载离线部署包，包括对应架构的k3s和镜像包k3s-airgap-images-amd64.tar.gz。</a><br><img src="/34ca5b52/img.png" alt="img.png"><br>2.获取k3s安装脚本，浏览器访问<a target="_blank" rel="noopener" href="https://get.k3s.io/%EF%BC%8C%E8%BF%94%E5%9B%9E%E5%86%85%E5%AE%B9%E4%BF%9D%E5%AD%98%E4%B8%BAinstall.sh">https://get.k3s.io/，返回内容保存为install.sh</a><br><img src="/34ca5b52/img2.png" alt="img2.png"><br>3.将k3s、k3s-airgap-images-amd64.tar.gz、install.sh三个文件上传到服务器。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">允许转发，找到net.ipv4.ip_forward属性，值改为1（net.ipv4.ip_forward=1）</span></span><br><span class="line">vi /etc/sysctl.conf</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使配置生效</span></span><br><span class="line">sysctl -p</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果想要部署主节点</span></span><br><span class="line">chmod 777 install.sh</span><br><span class="line">chmod 777 k3s</span><br><span class="line">cp k3s /usr/local/bin/k3s</span><br><span class="line">tar -xvf k3s-airgap-images-amd64.tar.gz -C /opt/images</span><br><span class="line">export INSTALL_K3S_SKIP_DOWNLOAD=true</span><br><span class="line">export K3S_IMAGES_DIR=/opt/images</span><br><span class="line">./install</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果想要部署从节点</span></span><br><span class="line">chmod 777 install.sh</span><br><span class="line">chmod 777 k3s</span><br><span class="line">tar -xvf k3s-airgap-images-amd64.tar.gz -C /opt/images</span><br><span class="line">export INSTALL_K3S_SKIP_DOWNLOAD=true</span><br><span class="line">export K3S_IMAGES_DIR=/opt/images</span><br><span class="line">export K3S_URL=https://&lt;主节点&gt;:6443</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定主节点 <span class="built_in">cat</span> /var/lib/rancher/k3s/server/node-token</span></span><br><span class="line">export K3S_TOKEN=K10172da98fd953b3116d44fc9e7191b5e89bec43398261934e38e15170d8b54768::server:fcff60a5e309474887f82c0f6bb2c123</span><br><span class="line">./install </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在启动文件指定节点使用的IP,--node-ip=100.76.48.21</span></span><br><span class="line">root@VM-4-2-ubuntu:/opt# cat /etc/systemd/system/k3s.service</span><br><span class="line">[Unit]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">...</span></span><br><span class="line">[Install]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">...</span></span><br><span class="line">[Service]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">...</span></span><br><span class="line">ExecStart=/usr/local/bin/k3s \</span><br><span class="line">    server \</span><br><span class="line">    --node-ip=100.76.48.21 \</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使节点IP配置修改生效</span></span><br><span class="line">root@VM-4-2-ubuntu:/opt# systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+<p>4.需要注意，部署前请确认k3s集群中各服务器的&#x2F;etc&#x2F;hostname不能相同，修改&#x2F;etc&#x2F;hostname时需要同步修改&#x2F;etc&#x2F;hosts<br>5.部署完成使用systemctl status k3s或systemctl status k3s-agent查看部署情况。</p>
+<h2 id="kubernetes-dashboard控制台部署，此步骤非离线"><a href="#kubernetes-dashboard控制台部署，此步骤非离线" class="headerlink" title="kubernetes-dashboard控制台部署，此步骤非离线"></a>kubernetes-dashboard控制台部署，此步骤非离线</h2><p>1.安装kubernetes-dashboard</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改NodePort,其他配置不变</span></span><br><span class="line">kubectl -n kubernetes-dashboard edit svc kubernetes-dashboard</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">访问token获取</span></span><br><span class="line">kubectl -n kubernetes-dashboard create token my-username</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">获取kubernetes-dashboard浏览器访问端口</span></span><br><span class="line">kubectl -n kubernetes-dashboard get svc</span><br></pre></td></tr></table></figure>
+<p>2.创建kubernetes-dashboard访问用户</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建访问用户,保存为kubernetes-dashboard-user.yaml</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ServiceAccount</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-username</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">kubernetes-dashboard</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">rbac.authorization.k8s.io/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ClusterRoleBinding</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-username</span></span><br><span class="line"><span class="attr">roleRef:</span></span><br><span class="line">  <span class="attr">apiGroup:</span> <span class="string">rbac.authorization.k8s.io</span></span><br><span class="line">  <span class="attr">kind:</span> <span class="string">ClusterRole</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">cluster-admin</span></span><br><span class="line"><span class="attr">subjects:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">kind:</span> <span class="string">ServiceAccount</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-username</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">kubernetes-dashboard</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">访问token获取</span></span><br><span class="line">kubectl apply -f kubernetes-dashboard-user.yaml</span><br></pre></td></tr></table></figure>
+<p>2.获取token</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">访问token获取</span></span><br><span class="line">kubectl -n kubernetes-dashboard create token my-username</span><br></pre></td></tr></table></figure>
+<p>3.浏览器访问，填入步骤三获取的token，进入kubernetes-dashboard</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/k8s/" rel="tag"># k8s</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/80c2fada/" rel="prev" title="读美国纽约摄影学院教材">
+                  <i class="fa fa-chevron-left"></i> 读美国纽约摄影学院教材
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  <span id="ganzhi"></span>
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bokiboki.top</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><div id="dog_if" class="dog"></div>
+<script>
+  window.addEventListener('resize', function() {
+    dog()
+  })
+
+  window.onload=function(){
+    dog()
+  }
+
+  function dog(){
+    const width = document.body.clientWidth
+    if(width >= 1440){
+      document.getElementById('dog_if').setAttribute("class","dog");
+    }else if(width >= 720 && width < 1440){
+      document.getElementById('dog_if').setAttribute("class","dog2");
+    }else if(width < 720){
+      document.getElementById('dog_if').setAttribute("class","dog3");
+    }
+  }
+</script>
+<script src="../js/calendar.js"></script>
+<script>
+  const span = document.getElementById('ganzhi');
+
+  const now = new Date();
+  const year = now.getFullYear();      // 获取年（四位数）
+  const month = now.getMonth() + 1;   // 获取月（0-11，需要加 1）
+  const day = now.getDate();          // 获取日（1-31）
+  const hours = now.getHours();       // 获取小时（0-23）
+  const dateJson = calendar.solar2lunar(year,month,day,hours)
+
+  const gua = liuyao.GetGua(liuyao.GetGuaRandom())
+
+  span.textContent = dateJson.gzYear + " " +dateJson.gzMonth + " " +dateJson.gzDay + " " +dateJson.gzHour;
+
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yanyunfang/yanyunfang.github.io","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
