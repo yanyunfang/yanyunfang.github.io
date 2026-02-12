@@ -1293,6 +1293,8 @@ var liuyao = {
   },
 
   GetShi: function (guaKey, isBenGong, isYouHun, isGuiHun) {
+    let guaKeyStr = guaKey.toString(2).padStart(6, '0');
+
     if (isBenGong) {
       return 6
     }
@@ -1302,12 +1304,12 @@ var liuyao = {
     if (isGuiHun) {
       return 3
     }
-    let neiGua = guaKey & 0b111;
-    let waiGua = (guaKey >> 3) & 0b111;
+    let neiGua = guaKeyStr.slice(3);
+    let waiGua = guaKeyStr.slice(0, 3);
 
-    let isTianTong = (neiGua >> 2) & 0b1 === (waiGua >> 2) & 0b1;
-    let isRenTong = (neiGua >> 1) & 0b1 === (waiGua >> 1) & 0b1;
-    let isDiTong = neiGua & 0b1 === waiGua & 0b1;
+    let isTianTong = neiGua.slice(0, 1) === waiGua.slice(0, 1);
+    let isRenTong = neiGua.slice(1, 2) === waiGua.slice(1, 2);
+    let isDiTong = neiGua.slice(2) === waiGua.slice(2);
 
     if (!isTianTong && !isRenTong && !isDiTong) {
       return 3
