@@ -28,8 +28,8 @@
 <meta property="og:site_name" content="一.一.org">
 <meta property="og:description" content="fetch(&#39;https:&#x2F;&#x2F;m.961119.xyz&#x2F;yyfmusic&#39;)   .then(res &#x3D;&gt; res.text())   .then(html &#x3D;&gt; {       const parser &#x3D; new DOMParser();       const doc &#x3D; parser.parseFromString(html, &#39;text&#x2F;html&#39;);        &#x2F;&#x2F; 筛选">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-05-12T09:53:02.034Z">
-<meta property="article:modified_time" content="2026-05-12T09:53:02.034Z">
+<meta property="article:published_time" content="2026-05-12T10:22:29.469Z">
+<meta property="article:modified_time" content="2026-05-12T10:22:29.469Z">
 <meta property="article:author" content="yanyunfang">
 <meta name="twitter:card" content="summary">
 
@@ -250,11 +250,15 @@ fetch('https://m.961119.xyz/yyfmusic')
           const parts = decoded.split(' - ');
           const song = parts[0] || '';
           const artist = parts[1] || '';
+
+          // 构造对应的 lrc 文件名（假设同目录同名）
+          const lrcHref = f.href.replace(/\.mp3$/i, '.lrc');
           return {
               name: song,
               artist: artist,
               url: `https://m.961119.xyz/yyfmusic/${f.href}`,
-              cover: '/images/github.gif'  // 可选封面 URL，如果有的话可以填
+              cover: '/images/github.gif',       // 可选封面 URL
+              lrc: `https://m.961119.xyz/yyfmusic/${lrcHref}`
           };
       });
 
@@ -262,7 +266,9 @@ fetch('https://m.961119.xyz/yyfmusic')
       const ap = new APlayer({
           container: document.querySelector('.music'),
           audio: audios,
-          listMaxHeight: 1800
+          listMaxHeight: 1800,
+          theme: '#cccccc',
+          lrcType: 3,
       });
   }).catch(err => console.error(err));
 </script>
