@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://一.一.org/music/index.html</loc>
+    
+    <lastmod>2026-05-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://一.一.org/picture/index.html</loc>
     
     <lastmod>2026-05-12</lastmod>
