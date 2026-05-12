@@ -4,7 +4,34 @@
   <url>
     <loc>https://一.一.org/picture/index.html</loc>
     
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://一.一.org/news/index.html</loc>
+    
+    <lastmod>2026-05-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://一.一.org/minio/index.html</loc>
+    
+    <lastmod>2026-05-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://一.一.org/guide/index.html</loc>
+    
+    <lastmod>2026-05-12</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -23,24 +50,6 @@
     <loc>https://一.一.org/34ca5b52/</loc>
     
     <lastmod>2026-05-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://一.一.org/minio/index.html</loc>
-    
-    <lastmod>2026-05-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://一.一.org/news/index.html</loc>
-    
-    <lastmod>2026-05-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1577,15 +1586,6 @@
   </url>
   
   <url>
-    <loc>https://一.一.org/guide/index.html</loc>
-    
-    <lastmod>2026-03-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://一.一.org/tags/index.html</loc>
     
     <lastmod>2026-02-04</lastmod>
@@ -2137,7 +2137,7 @@
 
   <url>
     <loc>https://一.一.org/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -2145,14 +2145,14 @@
   
   <url>
     <loc>https://一.一.org/tags/hexo/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://一.一.org/tags/k8s/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -2161,7 +2161,7 @@
   
   <url>
     <loc>https://一.一.org/categories/%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
