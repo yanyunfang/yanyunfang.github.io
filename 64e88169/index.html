@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="codeva-g9ZIl4s0LZ">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xn--4gq.xn--4gq.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="离线mysql数据库安装mysql二进制安装包下载，可选Linux - Generic或对应版本下载地址">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql离线安装">
+<meta property="og:url" content="https://一.一.org/64e88169/index.html">
+<meta property="og:site_name" content="一.一.org">
+<meta property="og:description" content="离线mysql数据库安装mysql二进制安装包下载，可选Linux - Generic或对应版本下载地址">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-05-13T02:24:05.451Z">
+<meta property="article:modified_time" content="2026-05-13T02:47:12.748Z">
+<meta property="article:author" content="yanyunfang">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://一.一.org/64e88169/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://一.一.org/64e88169/","path":"64e88169/","title":"mysql离线安装"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>mysql离线安装 | 一.一.org</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?ab75fcadf9bd0813271164b604f7cfd2"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="一.一.org" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <!-- <a target="_blank" rel="noopener" href="https://github.com/yanyunfang" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style> -->
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+    
+      <a href="/" class="brand" rel="start">
+        <img class="custom-logo-image" src="/images/logo3.png" alt="一.一.org">
+      </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-news"><a href="/news/" rel="section"><i class="fas fa-radio fa-fw"></i>新闻</a></li><li class="menu-item menu-item-guide"><a href="/guide/" rel="section"><i class="fa fa-book fa-fw"></i>指导</a></li><li class="menu-item menu-item-minio"><a href="/minio/" rel="section"><i class="fa fa-cloud-upload fa-fw"></i>云盘</a></li><li class="menu-item menu-item-picture"><a href="/picture/" rel="section"><i class="fas fa-file-image fa-fw"></i>相册</a></li><li class="menu-item menu-item-music"><a href="/music/" rel="section"><i class="fa fa-music fa-fw"></i>歌单</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <div class="sidebar-category animated fadeInUp">
+     <a href="/tags/docker/" style="font-size: 12px;" class="tag-cloud-0">docker</a> <a href="/tags/hexo/" style="font-size: 12px;" class="tag-cloud-0">hexo</a> <a href="/tags/k8s/" style="font-size: 12px;" class="tag-cloud-0">k8s</a> <a href="/tags/linux/" style="font-size: 30px;" class="tag-cloud-10">linux</a> <a href="/tags/mysql/" style="font-size: 12px;" class="tag-cloud-0">mysql</a> <a href="/tags/nginx/" style="font-size: 12px;" class="tag-cloud-0">nginx</a> <a href="/tags/photography/" style="font-size: 12px;" class="tag-cloud-0">photography</a>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A6%BB%E7%BA%BFmysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">离线mysql数据库安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql%E9%85%8D%E7%BD%AE%E4%B8%BB%E4%BB%8E"><span class="nav-number">2.</span> <span class="nav-text">mysql配置主从</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">yanyunfang</p>
+  <div class="site-description" itemprop="description">灵台无计逃神矢，风雨如磐暗故园。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://一.一.org/64e88169/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yanyunfang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一.一.org">
+      <meta itemprop="description" content="灵台无计逃神矢，风雨如磐暗故园。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+        <meta itemprop="name" content="mysql离线安装 | 一.一.org">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mysql离线安装
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-05-13 10:24:05 / 修改时间：10:47:12" itemprop="dateCreated datePublished" datetime="2026-05-13T10:24:05+08:00">2026-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="离线mysql数据库安装"><a href="#离线mysql数据库安装" class="headerlink" title="离线mysql数据库安装"></a>离线mysql数据库安装</h2><p>mysql二进制安装包下载，可选Linux - Generic或对应版本<br><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/8.0.html">下载地址</a></p>
+<span id="more"></span>
+<p>先处理配置文件，&#x2F;etc&#x2F;my.cnf内容，安装前放置在&#x2F;etc下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">socket=/var/lib/mysql/mysqld.sock</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">user=root</span><br><span class="line">basedir=/usr/local/mysql</span><br><span class="line">datadir=/usr/local/mysql/data</span><br><span class="line">socket=/var/lib/mysql/mysqld.sock</span><br><span class="line">log-error=/var/lib/mysql/mysql.log</span><br><span class="line">pid-file=/var/lib/mysql/mysqld.pid</span><br><span class="line">sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION</span><br></pre></td></tr></table></figure>
+<p>安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf mysql-8.0.21-linux-glibc2.12-x86_64.tar.gz</span><br><span class="line">mv mysql-8.0.21-linux-glibc2.12-x86_64 /usr/local/mysql</span><br><span class="line">mkdir /var/lib/mysql</span><br><span class="line">cd /usr/local/mysql/bin</span><br><span class="line">./mysqld --initialize</span><br><span class="line">ln -s /usr/local/mysql/bin/mysql /usr/bin</span><br><span class="line">ln -s /usr/local/mysql/bin/mysqldump /usr/bin</span><br></pre></td></tr></table></figure>
+<p>查看初始密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/lib/mysql/mysql.log</span><br></pre></td></tr></table></figure>
+<p>找到这一行，复制密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A temporary password is generated for root@localhost: fagaghahh@$</span><br></pre></td></tr></table></figure>
+<p>修改密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED with mysql_native_password BY &#x27;zasechsmserver&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<p>停止并移除原 service服务（避免冲突）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service mysql stop</span><br><span class="line">chkconfig mysql off 2&gt;/dev/null</span><br><span class="line">rm -f /etc/init.d/mysql</span><br></pre></td></tr></table></figure>
+<p>创建 MySQL service 文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/systemd/system/mysqld.service</span><br></pre></td></tr></table></figure>
+<p>内容如下（与当前 my.cnf 路径和安装目录完全匹配）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=MySQL Server</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">User=root</span><br><span class="line">Group=root</span><br><span class="line"></span><br><span class="line">ExecStart=/usr/local/mysql/bin/mysqld --defaults-file=/etc/my.cnf</span><br><span class="line">ExecStop=/usr/local/mysql/bin/mysqladmin --defaults-file=/etc/my.cnf shutdown</span><br><span class="line">PIDFile=/var/lib/mysql/mysqld.pid</span><br><span class="line"></span><br><span class="line">Restart=on-failure</span><br><span class="line">LimitNOFILE=65535</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>重新加载 systemd 并启动 MySQL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reexec</span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl start mysqld</span><br></pre></td></tr></table></figure>
+
+<h2 id="mysql配置主从"><a href="#mysql配置主从" class="headerlink" title="mysql配置主从"></a>mysql配置主从</h2><p>主服务器mysql配置文件 &#x2F;etc&#x2F;my.cnf添加配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">log-bin=mysql-bin   //[必须]启用二进制日志</span><br><span class="line">server-id=111      //[必须]服务器唯一ID</span><br></pre></td></tr></table></figure>
+<p>从服务器mysql配置文件 &#x2F;etc&#x2F;my.cnf</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">server-id=222      //[必须]服务器唯一ID</span><br></pre></td></tr></table></figure>
+<p>两台服务器重启</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql restart</span><br></pre></td></tr></table></figure>
+<p>在主服务器上建立帐户并授权slave:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;GRANT REPLICATION SLAVE ON *.* to &#x27;mysync&#x27;@&#x27;%&#x27; identified by &#x27;mysql123456&#x27;;</span><br></pre></td></tr></table></figure>
+<p>登录主服务器的mysql，查询master的状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;show master status;</span><br><span class="line">+------------------+----------+--------------+------------------+</span><br><span class="line">| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |</span><br><span class="line">+------------------+----------+--------------+------------------+</span><br><span class="line">| mysql-bin.000004 |      308 |              |                  |</span><br><span class="line">+------------------+----------+--------------+------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>配置从服务器Slave：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;change master to master_host=&#x27;192.168.145.222&#x27;,master_user=&#x27;mysync&#x27;,master_password=&#x27;mysql123456&#x27;,master_log_file=&#x27;mysql-bin.000004&#x27;,master_log_pos=308;</span><br><span class="line">mysql&gt;start slave;</span><br></pre></td></tr></table></figure>
+<p>检查从服务器复制功能状态：其中的两个参数都为yes说明生效  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show slave status\G</span><br><span class="line">Slave_IO_Running: Yes    //此状态必须YES</span><br><span class="line">Slave_SQL_Running: Yes     //此状态必须YES</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="mailto:txyyf233@gmail.com">
+            <span class="icon">
+              <i class="fas fa-envelope"></i>
+            </span>
+
+            <span class="label">EMAIL</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="https://github.com/yanyunfang">
+            <span class="icon">
+              <i class="fab fa-github"></i>
+            </span>
+
+            <span class="label">GITHUB</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/sitemap.xml">
+            <span class="icon">
+              <i class="fa fa-sitemap"></i>
+            </span>
+
+            <span class="label">SITEMAP</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/mysql/" rel="tag"># mysql</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/5ac3fe6f/" rel="prev" title="docker离线安装">
+                  <i class="fa fa-chevron-left"></i> docker离线安装
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  <span id="ganzhi"></span>
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一.一.org</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <span>
+     
+       
+       <a href="mailto:txyyf233@gmail.com" rel="alternate">
+         <i class="fas fa-envelope"></i>
+       </a>
+     
+       
+       <a target="_blank" href="https://github.com/yanyunfang" rel="alternate noopener">
+         <i class="fab fa-github"></i>
+       </a>
+     
+       
+       <a href="/atom.xml" rel="alternate">
+         <i class="fa fa-rss"></i>
+       </a>
+     
+       
+       <a href="/sitemap.xml" rel="alternate">
+         <i class="fa fa-sitemap"></i>
+       </a>
+     
+  </span>
+
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><div id="dog_if" class="dog"></div>
+<script>
+  window.addEventListener('resize', function() {
+    dog()
+  })
+
+  window.onload=function(){
+    dog()
+  }
+
+  function dog(){
+    const width = document.body.clientWidth
+    if(width >= 1440){
+      document.getElementById('dog_if').setAttribute("class","dog");
+    }else if(width >= 720 && width < 1440){
+      document.getElementById('dog_if').setAttribute("class","dog2");
+    }else if(width < 720){
+      document.getElementById('dog_if').setAttribute("class","dog3");
+    }
+  }
+</script>
+<script src="../js/calendar.js"></script>
+<script>
+  const span = document.getElementById('ganzhi');
+
+  const now = new Date();
+  const year = now.getFullYear();      // 获取年（四位数）
+  const month = now.getMonth() + 1;   // 获取月（0-11，需要加 1）
+  const day = now.getDate();          // 获取日（1-31）
+  const hours = now.getHours();       // 获取小时（0-23）
+  const dateJson = calendar.solar2lunar(year,month,day,hours)
+
+  const gua = liuyao.GetGua(liuyao.GetGuaRandom())
+
+  span.textContent = dateJson.gzYear + " " +dateJson.gzMonth + " " +dateJson.gzDay + " " +dateJson.gzHour;
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"yanyunfang/yanyunfang.github.io","issue_term":"pathname","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

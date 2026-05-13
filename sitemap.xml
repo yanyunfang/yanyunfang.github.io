@@ -2,6 +2,60 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://一.一.org/7bcd79f3/</loc>
+    
+    <lastmod>2026-05-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://一.一.org/80c2fada/</loc>
+    
+    <lastmod>2026-05-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://一.一.org/eace3423/</loc>
+    
+    <lastmod>2026-05-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://一.一.org/23199ecd/</loc>
+    
+    <lastmod>2026-05-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://一.一.org/64e88169/</loc>
+    
+    <lastmod>2026-05-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://一.一.org/5ac3fe6f/</loc>
+    
+    <lastmod>2026-05-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://一.一.org/picture/index.html</loc>
     
     <lastmod>2026-05-13</lastmod>
@@ -41,15 +95,6 @@
     <loc>https://一.一.org/guide/index.html</loc>
     
     <lastmod>2026-05-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://一.一.org/7bcd79f3/</loc>
-    
-    <lastmod>2026-05-11</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2166,10 +2211,52 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://一.一.org/tags/photography/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://一.一.org/tags/linux/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://一.一.org/tags/docker/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://一.一.org/tags/mysql/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://一.一.org/tags/nginx/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
     <loc>https://一.一.org/categories/%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://一.一.org/categories/%E6%91%84%E5%BD%B1/</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

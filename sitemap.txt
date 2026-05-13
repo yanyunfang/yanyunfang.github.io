@@ -1,9 +1,14 @@
+https://一.一.org/7bcd79f3/
+https://一.一.org/80c2fada/
+https://一.一.org/eace3423/
+https://一.一.org/23199ecd/
+https://一.一.org/64e88169/
+https://一.一.org/5ac3fe6f/
 https://一.一.org/picture/index.html
 https://一.一.org/music/index.html
 https://一.一.org/news/index.html
 https://一.一.org/minio/index.html
 https://一.一.org/guide/index.html
-https://一.一.org/7bcd79f3/
 https://一.一.org/34ca5b52/
 https://一.一.org/guide/008-%E6%80%8E%E6%A0%B7%E5%88%86%E6%9E%90%E5%86%9C%E6%9D%91%E9%98%B6%E7%BA%A7.html
 https://一.一.org/guide/002-%E4%B8%AD%E5%9B%BD%E7%9A%84%E7%BA%A2%E8%89%B2%E6%94%BF%E6%9D%83%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E5%A4%9F%E5%AD%98%E5%9C%A8%EF%BC%9F.html
@@ -239,4 +244,10 @@ https://一.一.org/guide/227-%E5%85%9A%E5%86%85%E5%9B%A2%E7%BB%93%E7%9A%84%E8%B
 https://一.一.org/
 https://一.一.org/tags/hexo/
 https://一.一.org/tags/k8s/
+https://一.一.org/tags/photography/
+https://一.一.org/tags/linux/
+https://一.一.org/tags/docker/
+https://一.一.org/tags/mysql/
+https://一.一.org/tags/nginx/
 https://一.一.org/categories/%E5%BC%80%E5%8F%91/
+https://一.一.org/categories/%E6%91%84%E5%BD%B1/
