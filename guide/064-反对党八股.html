@@ -240,7 +240,20 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">一.一.org</span>
+    
+    
+      <span class="author" itemprop="copyrightHolder" style="display: none;">一.一.org </span>
+    
+      <span class="author" itemprop="copyrightHolder" style="display: none;"> 一ω一 </span>
+    
+      <span class="author" itemprop="copyrightHolder" style="display: none;"> 一へ一  </span>
+    
+      <span class="author" itemprop="copyrightHolder" style="display: none;"> 一◡一 </span>
+    
+      <span class="author" itemprop="copyrightHolder" style="display: none;"> 一ㅅ一 </span>
+    
+      <span class="author" itemprop="copyrightHolder" style="display: none;"> 一㉨一</span>
+    
 </div>
 <div class="busuanzi-count">
     <span class="post-meta-item" id="busuanzi_container_site_uv">
@@ -330,6 +343,18 @@
   const gua = liuyao.GetGua(liuyao.GetGuaRandom())
 
   span.textContent = dateJson.gzYear + " " +dateJson.gzMonth + " " +dateJson.gzDay + " " +dateJson.gzHour;
+
+  // 获取所有颜文字元素,theme.footer.copyright轮播
+  const items = document.querySelectorAll('.author');
+  let index = 0;
+  function showCopyright() {
+    items.forEach(item => item.style.display = 'none');
+    items[index].style.display = 'inline';
+    // 循环切换
+    index = (index + 1) % items.length;
+  }
+  showCopyright();
+  setInterval(showCopyright, 1000);
 </script>
 
     </div>
