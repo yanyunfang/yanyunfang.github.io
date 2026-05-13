@@ -1490,6 +1490,7 @@ pre code {
   color: #f00;
   display: inline-block;
   margin: 0 5px;
+  animation: icon-animate 1.33s ease-in-out infinite;
 }
 .busuanzi-count #busuanzi_container_site_uv {
   display: none;
@@ -1501,14 +1502,14 @@ pre code {
   0%, 100% {
     transform: scale(1);
   }
-  10%, 30% {
-    transform: scale(0.9);
+  25% {
+    transform: scale(0.8);
   }
-  20%, 40%, 60%, 80% {
-    transform: scale(1.1);
+  50% {
+    transform: scale(1);
   }
-  50%, 70% {
-    transform: scale(1.1);
+  75% {
+    transform: scale(0.8);
   }
 }
 .back-to-top {
