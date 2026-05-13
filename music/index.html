@@ -21,15 +21,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"xn--4gq.xn--4gq.org","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="fetch(&#39;https:&#x2F;&#x2F;m.961119.xyz&#x2F;yyfmusic&#39;)   .then(res &#x3D;&gt; res.text())   .then(html &#x3D;&gt; {       const parser &#x3D; new DOMParser();       const doc &#x3D; parser.parseFromString(html, &#39;text&#x2F;html&#39;);        &#x2F;&#x2F; 筛选">
+    <meta name="description" content="Loading...     const loadingEl &#x3D; document.querySelector(&#39;.loading&#39;); const loadingEl2 &#x3D; document.querySelector(&#39;.loading2&#39;); loadingEl.style.display &#x3D; &#39;block&#39;; loadingEl2.style.display &#x3D; &#39;block&#39;; fet">
 <meta property="og:type" content="website">
-<meta property="og:title" content="近期在听">
+<meta property="og:title" content="一.一.org">
 <meta property="og:url" content="https://一.一.org/music/index.html">
 <meta property="og:site_name" content="一.一.org">
-<meta property="og:description" content="fetch(&#39;https:&#x2F;&#x2F;m.961119.xyz&#x2F;yyfmusic&#39;)   .then(res &#x3D;&gt; res.text())   .then(html &#x3D;&gt; {       const parser &#x3D; new DOMParser();       const doc &#x3D; parser.parseFromString(html, &#39;text&#x2F;html&#39;);        &#x2F;&#x2F; 筛选">
+<meta property="og:description" content="Loading...     const loadingEl &#x3D; document.querySelector(&#39;.loading&#39;); const loadingEl2 &#x3D; document.querySelector(&#39;.loading2&#39;); loadingEl.style.display &#x3D; &#39;block&#39;; loadingEl2.style.display &#x3D; &#39;block&#39;; fet">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-05-12T10:22:29.469Z">
-<meta property="article:modified_time" content="2026-05-12T10:22:29.469Z">
+<meta property="article:published_time" content="2026-05-13T01:01:35.377Z">
+<meta property="article:modified_time" content="2026-05-13T01:01:35.377Z">
 <meta property="article:author" content="yanyunfang">
 <meta name="twitter:card" content="summary">
 
@@ -38,10 +38,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"https://一.一.org/music/index.html","path":"music/index.html","title":"近期在听"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"https://一.一.org/music/index.html","path":"music/index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>近期在听 | 一.一.org
+<title>一.一.org
 </title>
   
 
@@ -195,7 +195,7 @@
     
     <div class="post-block" lang="zh-CN"><header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">近期在听
+<h1 class="post-title" itemprop="name headline">
 </h1>
 
 <div class="post-meta-container">
@@ -206,10 +206,16 @@
       
       
       <div class="post-body">
-          <div class="music"></div>
-<link rel="stylesheet" href="/css/APlayer.min.css">
-<script src="/js/APlayer.min.js"></script>
+          <div class="loading"></div>
+<div class="loading2">Loading...</div>
+<div class="music"></div>
+<link rel="stylesheet" href="/css/aplayer.css">
+<script src="/js/aplayer.js"></script>
 <script>
+const loadingEl = document.querySelector('.loading');
+const loadingEl2 = document.querySelector('.loading2');
+loadingEl.style.display = 'block';
+loadingEl2.style.display = 'block';
 fetch('https://m.961119.xyz/yyfmusic')
   .then(res => res.text())
   .then(html => {
@@ -251,14 +257,11 @@ fetch('https://m.961119.xyz/yyfmusic')
           const song = parts[0] || '';
           const artist = parts[1] || '';
 
-          // 构造对应的 lrc 文件名（假设同目录同名）
-          const lrcHref = f.href.replace(/\.mp3$/i, '.lrc');
           return {
               name: song,
               artist: artist,
               url: `https://m.961119.xyz/yyfmusic/${f.href}`,
               cover: '/images/github.gif',       // 可选封面 URL
-              lrc: `https://m.961119.xyz/yyfmusic/${lrcHref}`
           };
       });
 
@@ -268,11 +271,48 @@ fetch('https://m.961119.xyz/yyfmusic')
           audio: audios,
           listMaxHeight: 1800,
           theme: '#cccccc',
-          lrcType: 3,
       });
+
+      //结束加载
+      loadingEl.style.display = 'none';
+      loadingEl2.style.display = 'none';
   }).catch(err => console.error(err));
 </script>
+<style>
+.post-block{
+    min-height: 100%;
+}
 
+.post-body{
+    position: relative;
+}
+
+.loading {
+    z-index: 999;
+    width: 30px;
+    height: 30px;
+    background:url(/images/github.gif);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top: 0px;
+    left: calc(50%);
+    transform: translate(-50%,-175%);
+    display: none;
+}
+.loading2 {
+    z-index: 999;
+    width: 50px;
+    height: 10px;
+    font-size: 10px;
+    position: absolute;
+    top: 30px;
+    left: calc(50% + 5px);
+    transform: translate(-50%,-500%);
+    display: none;
+    color: #333;
+}
+</style>
 
       </div>
       

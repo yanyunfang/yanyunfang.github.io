@@ -1,5 +1,5 @@
-https://一.一.org/music/index.html
 https://一.一.org/picture/index.html
+https://一.一.org/music/index.html
 https://一.一.org/news/index.html
 https://一.一.org/minio/index.html
 https://一.一.org/guide/index.html
