@@ -127,7 +127,7 @@
         
   
   <div class="sidebar-category animated fadeInUp">
-     <a href="/tags/docker/" style="font-size: 12px;" class="tag-cloud-0">docker</a> <a href="/tags/hexo/" style="font-size: 12px;" class="tag-cloud-0">hexo</a> <a href="/tags/k8s/" style="font-size: 12px;" class="tag-cloud-0">k8s</a> <a href="/tags/linux/" style="font-size: 30px;" class="tag-cloud-10">linux</a> <a href="/tags/mysql/" style="font-size: 12px;" class="tag-cloud-0">mysql</a> <a href="/tags/nginx/" style="font-size: 12px;" class="tag-cloud-0">nginx</a> <a href="/tags/photography/" style="font-size: 12px;" class="tag-cloud-0">photography</a>
+     <a href="/tags/docker/" style="font-size: 12px;" class="tag-cloud-0">docker</a> <a href="/tags/hexo/" style="font-size: 12px;" class="tag-cloud-0">hexo</a> <a href="/tags/k8s/" style="font-size: 12px;" class="tag-cloud-0">k8s</a> <a href="/tags/linux/" style="font-size: 24px;" class="tag-cloud-10">linux</a> <a href="/tags/mysql/" style="font-size: 12px;" class="tag-cloud-0">mysql</a> <a href="/tags/nginx/" style="font-size: 12px;" class="tag-cloud-0">nginx</a> <a href="/tags/photography/" style="font-size: 12px;" class="tag-cloud-0">photography</a>
   </div>
 
   <aside class="sidebar">
@@ -395,9 +395,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2026-05-13 10:08:54 / 修改时间：10:49:01" itemprop="dateCreated datePublished" datetime="2026-05-13T10:08:54+08:00">2026-05-13</time>
+      <time title="创建时间：2026-05-13 10:08:54" itemprop="dateCreated datePublished" datetime="2026-05-13T10:08:54+08:00">2026-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-05-14 09:33:27" itemprop="dateModified" datetime="2026-05-14T09:33:27+08:00">2026-05-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -419,7 +425,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="tcpdump抓包命令"><a href="#tcpdump抓包命令" class="headerlink" title="tcpdump抓包命令"></a>tcpdump抓包命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter -n -t test_plan.jmx -l result.jtl</span><br></pre></td></tr></table></figure>
+          <h3 id="tcpdump抓包命令"><a href="#tcpdump抓包命令" class="headerlink" title="tcpdump抓包命令"></a>tcpdump抓包命令</h3><p>-i p101p2是网口名<br>-y EN10MB是链路层类型，可以防止tcpdump的抓包wireshark打不开</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -i p101p2 -y EN10MB host 192.168.112.126 and tcp port 10443 -w ccsp_cipher_resource316.pcap</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/eace3423/#more" rel="contents">

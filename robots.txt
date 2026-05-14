@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://xn--4gq.xn--4gq.org/sitemap.xml
